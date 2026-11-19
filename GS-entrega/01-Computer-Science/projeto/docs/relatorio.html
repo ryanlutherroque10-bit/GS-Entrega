@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Relatório — Módulo de decisão lógica da Tarifa Social (Citizen Assist AI)</title>
+<style>@page { size: A4; margin: 16mm 15mm 16mm 15mm; }
+:root { --ink:#1b1f24; --soft:#57606a; --line:#d0d7de; --accent:#0b5cad; --bg:#f6f8fa; }
+* { box-sizing: border-box; }
+body { margin:0; color:var(--ink); font: 10.5pt/1.5 "Segoe UI", Arial, sans-serif; background:#fff; }
+h1 { font-size: 22pt; margin: 0 0 6px; line-height: 1.2; }
+h2 { font-size: 14pt; margin: 22px 0 8px; padding-bottom: 4px; border-bottom: 2px solid var(--accent); color: var(--accent); break-after: avoid; }
+h3 { font-size: 11.5pt; margin: 14px 0 6px; break-after: avoid; }
+p { margin: 6px 0; }
+code, .mono { font-family: Consolas, "Cascadia Mono", monospace; font-size: 9.5pt; }
+.expr { font-family: Consolas, monospace; font-size: 10.5pt; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 6px 10px; margin: 6px 0; }
+table { border-collapse: collapse; width: 100%; margin: 8px 0; font-size: 9.5pt; break-inside: avoid; }
+th, td { border: 1px solid var(--line); padding: 4px 6px; text-align: center; vertical-align: middle; }
+th { background: var(--bg); }
+td.txt, th.txt, td.l { text-align: left; }
+td.hi { background: #dbeafe; font-weight: 700; }
+td.r { color: var(--soft); }
+td.ok { color: #1a7f37; font-weight: 700; }
+td.bad { color: #d1242f; font-weight: 700; }
+.capa { height: 250mm; display: flex; flex-direction: column; justify-content: center; break-after: page; }
+.capa .tag { color: var(--accent); font-weight: 700; letter-spacing: 1px; font-size: 10pt; }
+.capa .sub { font-size: 13pt; color: var(--soft); margin: 4px 0 30px; }
+.capa table { width: auto; font-size: 10.5pt; }
+.capa td { text-align: left; border: none; padding: 3px 14px 3px 0; }
+.aviso { border-left: 4px solid #bf8700; background: #fff8c5; padding: 8px 12px; margin: 10px 0; border-radius: 0 6px 6px 0; }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 14px; }
+.kmap { width: 100%; max-width: 330px; }
+.kt { font: 700 12px "Segoe UI", Arial; fill: var(--ink); }
+.kl { font: 600 11px Consolas, monospace; fill: var(--soft); }
+.kc { fill: #fff; stroke: #8c959f; stroke-width: 1; }
+.kv { font: 600 16px Consolas, monospace; fill: #8c959f; }
+.kv.on { fill: var(--ink); font-weight: 800; }
+.km { font: 8px Consolas, monospace; fill: #8c959f; }
+.kg { font: 600 11px Consolas, monospace; fill: var(--ink); }
+.circ { width: 100%; break-inside: avoid; }
+.circ.big { height: 178mm; display: block; }
+.ct { font: 700 12px "Segoe UI", Arial; fill: var(--ink); }
+.g { fill: #fff; stroke: var(--ink); stroke-width: 1.6; }
+.w { fill: none; stroke: #57606a; stroke-width: 1.3; }
+.lit { font: 11px Consolas, monospace; fill: var(--ink); }
+.gn { font: 9px Consolas, monospace; fill: var(--soft); }
+.out { fill: #fff; stroke: var(--accent); stroke-width: 2; }
+.on { font: 700 13px "Segoe UI", Arial; fill: var(--accent); }
+.nota { font: 10px "Segoe UI", Arial; fill: var(--soft); }
+figure { margin: 8px 0; break-inside: avoid; }
+figure img { width: 100%; border: 1px solid var(--line); border-radius: 4px; }
+figcaption { font-size: 9pt; color: var(--soft); margin-top: 3px; }
+.galeria { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px 12px; }
+.thumb figcaption { font-size: 9pt; text-align: center; }
+pre { background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; font: 8.5pt/1.4 Consolas, monospace; white-space: pre-wrap; break-inside: avoid; }
+.pb { break-before: page; }
+ol.passos li { margin: 3px 0; }
+.ref li { margin: 5px 0; }
+.thumb { break-inside: avoid; margin: 0; }
+.thumb img { width: 100%; height: 50mm; object-fit: contain; background: #fff; }
+.ref { break-inside: avoid; }
+</style>
+</head>
+<body>
+
+<section class="capa">
+  <div class="tag">GLOBAL SOLUTION 2026.2 · CITIZEN ASSIST AI</div>
+  <h1>Módulo de decisão lógica:<br>orientação sobre a Tarifa Social de Energia Elétrica</h1>
+  <div class="sub">Relatório técnico — Computer Science · Lógica booleana, De Morgan e mapas de Karnaugh</div>
+  <table>
+    <tr><td><b>Curso / turma</b></td><td>Ciência da Computação · 1º ano · 1CC-FEV</td></tr>
+    <tr><td><b>Integrantes</b></td><td>Ryan Luther Roque — RM 572993<br>João Guilherme Figueiredo — RM 572697</td></tr>
+    <tr><td><b>Simulador</b></td><td>Logic.ly (logic.ly/demo)</td></tr>
+    <tr><td><b>Data</b></td><td>12 de novembro de 2026</td></tr>
+  </table>
+  <div class="aviso" style="margin-top:28px">Protótipo educacional. Não é canal oficial, não coleta dados pessoais e não confirma a concessão de serviços ou direitos. A decisão sobre a Tarifa Social cabe à distribuidora de energia, com base no CadÚnico.</div>
+</section>
+
+<h2>1. Problema escolhido</h2>
+<p>Muitas famílias de baixa renda não sabem se podem receber a <b>Tarifa Social de Energia Elétrica</b> nem a quem recorrer. O módulo de decisão lógica do Citizen Assist AI faz quatro perguntas de sim/não e devolve <b>uma</b> orientação clara: há indício de direito naquela conta de luz; a família atende a uma condição, mas é preciso conferir com a distribuidora a situação da unidade (se é residencial e se é a única da família com o benefício); ou as condições modeladas não foram atendidas e a pessoa deve procurar o CRAS.</p>
+<p>A situação de atendimento é a <b>orientação sobre um benefício</b>: a resposta indica o próximo passo do cidadão, sem decidir por ele.</p>
+
+<h2>2. Regras e fontes</h2>
+<p>As regras foram retiradas do texto atualizado da Lei nº 12.212/2010, já com as mudanças da Lei nº 15.235/2025:</p>
+<table>
+  <tr><th class="txt">Dispositivo</th><th class="txt">O que diz (resumo)</th><th>Uso no modelo</th></tr>
+  <tr><td class="l">Art. 2º, caput</td><td class="l">A Tarifa Social vale para unidades da Subclasse Residencial Baixa Renda que atendam a <b>pelo menos uma</b> das condições dos incisos.</td><td>operador OU</td></tr>
+  <tr><td class="l">Art. 2º, I</td><td class="l">Família inscrita no CadÚnico com renda familiar mensal <i>per capita</i> menor ou igual a meio salário mínimo.</td><td>A · B</td></tr>
+  <tr><td class="l">Art. 2º, II</td><td class="l">Ter entre os moradores quem receba o Benefício de Prestação Continuada (BPC).</td><td>C</td></tr>
+  <tr><td class="l">Art. 2º, § 2º</td><td class="l">A tarifa é aplicada a uma única unidade consumidora por família de baixa renda.</td><td>D</td></tr>
+  <tr><td class="l">Art. 1º, I e II</td><td class="l">Desconto de 100% no consumo de até 80 kWh/mês; acima disso, sem desconto (redação da Lei nº 15.235/2025).</td><td>texto da saída T</td></tr>
+</table>
+<p>Fontes consultadas em <b>12 nov. 2026</b>; a lista completa com endereços está nas Referências.</p>
+<div class="aviso"><b>Fora do modelo:</b> o § 1º do art. 2º (famílias com renda até 3 salários mínimos e morador com doença que exige aparelho elétrico de uso contínuo), as regras específicas de famílias indígenas e quilombolas (§ 4º), a atualização do CadÚnico e a verificação de titularidade da conta. Por isso a saída K diz "procure o CRAS", e não "não tem direito".</div>
+
+<h2>3. Variáveis e saídas</h2>
+<table>
+  <tr><th>Variável</th><th class="txt">Pergunta ao cidadão</th><th>1 significa</th><th>0 significa</th></tr>
+  <tr><td><b>A</b></td><td class="l">A família está inscrita no CadÚnico?</td><td>inscrita</td><td>não inscrita</td></tr>
+  <tr><td><b>B</b></td><td class="l">A renda mensal por pessoa é de até meio salário mínimo?</td><td>até ½ salário mínimo</td><td>acima de ½ salário mínimo</td></tr>
+  <tr><td><b>C</b></td><td class="l">Alguém que mora na casa recebe o BPC?</td><td>recebe</td><td>ninguém recebe</td></tr>
+  <tr><td><b>D</b></td><td class="l">A conta é de uma casa (unidade residencial) <b>e</b> é a única da família com o benefício?</td><td>as duas coisas valem</td><td>pelo menos uma não vale: unidade não residencial, ou outra unidade da família já tem o benefício</td></tr>
+</table>
+<p><b>Sobre a variável D.</b> Ela combina duas condições (unidade residencial e unicidade do benefício na família) para manter o modelo em quatro variáveis. Por isso, quando D = 0, o circuito não sabe qual das duas falhou, e a saída U não pode afirmar que "o benefício deve ficar em outra unidade": ela apenas encaminha o cidadão à distribuidora. Os rótulos das lâmpadas nos prints são resumidos; vale o texto desta tabela.</p>
+<p>Para simplificar a escrita, usamos o sinal intermediário <b>R = A·B + C</b> ("atende ao art. 2º"). As saídas são exclusivas: em cada combinação, exatamente uma vale 1.</p>
+<table>
+  <tr><th>Saída</th><th class="txt">Quando vale 1</th><th class="txt">Orientação mostrada</th></tr>
+  <tr><td><b>T</b></td><td class="l" style="white-space:nowrap">R = 1 e D = 1</td><td class="l">Há indício de direito à Tarifa Social nesta unidade (100% de desconto até 80 kWh/mês). Confirmar com a distribuidora.</td></tr>
+  <tr><td><b>U</b></td><td class="l" style="white-space:nowrap">R = 1 e D = 0</td><td class="l">A família atende a uma condição, mas D = 0. Como D junta duas perguntas, o motivo pode ser unidade não residencial ou benefício já aplicado em outra unidade da família. Orientação: confirmar com a distribuidora a classificação da unidade e em qual conta o benefício pode ser aplicado. Não garante nem nega o benefício.</td></tr>
+  <tr><td><b>K</b></td><td class="l">R = 0</td><td class="l">Nenhuma das condições do art. 2º foi atendida: procurar o CRAS para inscrição/atualização no CadÚnico e verificar outras situações. Não é negativa oficial.</td></tr>
+</table>
+
+<h2>4. Tabela-verdade completa</h2>
+<p>Ordem das linhas: A é o bit mais significativo (índice do mintermo m = 8A + 4B + 2C + D).</p>
+<table>
+  <tr><th>m</th><th>A</th><th>B</th><th>C</th><th>D</th><th>R</th><th>T</th><th>U</th><th>K</th><th class="txt">Orientação</th></tr>
+  <tr><td>m0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class='r'>0</td><td class=''>0</td><td class=''>0</td><td class='hi'>1</td><td class='txt'>Condições modeladas não atendidas: procurar o CRAS</td></tr><tr><td>m1</td><td>0</td><td>0</td><td>0</td><td>1</td><td class='r'>0</td><td class=''>0</td><td class=''>0</td><td class='hi'>1</td><td class='txt'>Condições modeladas não atendidas: procurar o CRAS</td></tr><tr><td>m2</td><td>0</td><td>0</td><td>1</td><td>0</td><td class='r'>1</td><td class=''>0</td><td class='hi'>1</td><td class=''>0</td><td class='txt'>Atende a uma condição; conferir a unidade com a distribuidora</td></tr><tr><td>m3</td><td>0</td><td>0</td><td>1</td><td>1</td><td class='r'>1</td><td class='hi'>1</td><td class=''>0</td><td class=''>0</td><td class='txt'>Indício de direito nesta unidade</td></tr><tr><td>m4</td><td>0</td><td>1</td><td>0</td><td>0</td><td class='r'>0</td><td class=''>0</td><td class=''>0</td><td class='hi'>1</td><td class='txt'>Condições modeladas não atendidas: procurar o CRAS</td></tr><tr><td>m5</td><td>0</td><td>1</td><td>0</td><td>1</td><td class='r'>0</td><td class=''>0</td><td class=''>0</td><td class='hi'>1</td><td class='txt'>Condições modeladas não atendidas: procurar o CRAS</td></tr><tr><td>m6</td><td>0</td><td>1</td><td>1</td><td>0</td><td class='r'>1</td><td class=''>0</td><td class='hi'>1</td><td class=''>0</td><td class='txt'>Atende a uma condição; conferir a unidade com a distribuidora</td></tr><tr><td>m7</td><td>0</td><td>1</td><td>1</td><td>1</td><td class='r'>1</td><td class='hi'>1</td><td class=''>0</td><td class=''>0</td><td class='txt'>Indício de direito nesta unidade</td></tr><tr><td>m8</td><td>1</td><td>0</td><td>0</td><td>0</td><td class='r'>0</td><td class=''>0</td><td class=''>0</td><td class='hi'>1</td><td class='txt'>Condições modeladas não atendidas: procurar o CRAS</td></tr><tr><td>m9</td><td>1</td><td>0</td><td>0</td><td>1</td><td class='r'>0</td><td class=''>0</td><td class=''>0</td><td class='hi'>1</td><td class='txt'>Condições modeladas não atendidas: procurar o CRAS</td></tr><tr><td>m10</td><td>1</td><td>0</td><td>1</td><td>0</td><td class='r'>1</td><td class=''>0</td><td class='hi'>1</td><td class=''>0</td><td class='txt'>Atende a uma condição; conferir a unidade com a distribuidora</td></tr><tr><td>m11</td><td>1</td><td>0</td><td>1</td><td>1</td><td class='r'>1</td><td class='hi'>1</td><td class=''>0</td><td class=''>0</td><td class='txt'>Indício de direito nesta unidade</td></tr><tr><td>m12</td><td>1</td><td>1</td><td>0</td><td>0</td><td class='r'>1</td><td class=''>0</td><td class='hi'>1</td><td class=''>0</td><td class='txt'>Atende a uma condição; conferir a unidade com a distribuidora</td></tr><tr><td>m13</td><td>1</td><td>1</td><td>0</td><td>1</td><td class='r'>1</td><td class='hi'>1</td><td class=''>0</td><td class=''>0</td><td class='txt'>Indício de direito nesta unidade</td></tr><tr><td>m14</td><td>1</td><td>1</td><td>1</td><td>0</td><td class='r'>1</td><td class=''>0</td><td class='hi'>1</td><td class=''>0</td><td class='txt'>Atende a uma condição; conferir a unidade com a distribuidora</td></tr><tr><td>m15</td><td>1</td><td>1</td><td>1</td><td>1</td><td class='r'>1</td><td class='hi'>1</td><td class=''>0</td><td class=''>0</td><td class='txt'>Indício de direito nesta unidade</td></tr>
+</table>
+<p>Conferência: T tem 5 linhas em 1, U tem 5 e K tem 6. São 16 no total, sem sobreposição.</p>
+
+<h2>5. Expressões canônicas</h2>
+<h3>Soma de mintermos</h3>
+<div class="expr">T = Σm(3, 7, 11, 13, 15) = A′B′CD + A′BCD + AB′CD + ABC′D + ABCD</div>
+<div class="expr">U = Σm(2, 6, 10, 12, 14) = A′B′CD′ + A′BCD′ + AB′CD′ + ABC′D′ + ABCD′</div>
+<div class="expr">K = Σm(0, 1, 4, 5, 8, 9) = A′B′C′D′ + A′B′C′D + A′BC′D′ + A′BC′D + AB′C′D′ + AB′C′D</div>
+<h3>Produto de maxtermos (forma equivalente)</h3>
+<div class="expr">T = ΠM(0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 14) &nbsp;·&nbsp; U = ΠM(0, 1, 3, 4, 5, 7, 8, 9, 11, 13, 15) &nbsp;·&nbsp; K = ΠM(2, 3, 6, 7, 10, 11, 12, 13, 14, 15)</div>
+<p>Notação: <code>+</code> é OU, justaposição ou <code>·</code> é E, e <code>′</code> é NÃO.</p>
+
+<h2>6. Simplificação por álgebra booleana</h2>
+<h3>Saída T</h3>
+<table>
+  <tr><th>#</th><th class="txt">Expressão</th><th class="txt">Propriedade usada</th></tr>
+  <tr><td>1</td><td class="l mono">A′B′CD + A′BCD + AB′CD + ABC′D + ABCD</td><td class="l">forma canônica</td></tr>
+  <tr><td>2</td><td class="l mono">(A′B′CD + A′BCD) + (AB′CD + ABCD) + (ABC′D + ABCD)</td><td class="l">idempotência (X = X + X: ABCD usado duas vezes), comutativa e associativa</td></tr>
+  <tr><td>3</td><td class="l mono">A′CD(B′ + B) + ACD(B′ + B) + ABD(C′ + C)</td><td class="l">distributiva (pôr em evidência)</td></tr>
+  <tr><td>4</td><td class="l mono">A′CD·1 + ACD·1 + ABD·1 = A′CD + ACD + ABD</td><td class="l">complemento (X + X′ = 1) e identidade (X·1 = X)</td></tr>
+  <tr><td>5</td><td class="l mono">CD(A′ + A) + ABD = <b>CD + ABD</b></td><td class="l">distributiva, complemento e identidade</td></tr>
+  <tr><td>6</td><td class="l mono">D(AB + C)</td><td class="l">distributiva (fatoração de D): <b>T = D·R</b></td></tr>
+</table>
+<h3>Saída U</h3>
+<p>Mesmos passos de T, trocando D por D′ (as cinco linhas de U são as de T com D = 0):</p>
+<div class="expr">U = A′B′CD′ + A′BCD′ + AB′CD′ + ABC′D′ + ABCD′ = CD′ + ABD′ = D′(AB + C) = D′·R</div>
+<h3>Saída K e teoremas de De Morgan</h3>
+<table>
+  <tr><th>#</th><th class="txt">Expressão</th><th class="txt">Propriedade usada</th></tr>
+  <tr><td>1</td><td class="l mono">A′B′C′D′ + A′B′C′D + A′BC′D′ + A′BC′D + AB′C′D′ + AB′C′D</td><td class="l">forma canônica</td></tr>
+  <tr><td>2</td><td class="l mono">A′B′C′(D′ + D) + A′BC′(D′ + D) + AB′C′(D′ + D)</td><td class="l">distributiva</td></tr>
+  <tr><td>3</td><td class="l mono">A′B′C′ + A′BC′ + AB′C′</td><td class="l">complemento e identidade</td></tr>
+  <tr><td>4</td><td class="l mono">(A′B′C′ + A′BC′) + (A′B′C′ + AB′C′)</td><td class="l">idempotência (A′B′C′ repetido)</td></tr>
+  <tr><td>5</td><td class="l mono">A′C′(B′ + B) + B′C′(A′ + A) = <b>A′C′ + B′C′</b></td><td class="l">distributiva, complemento e identidade</td></tr>
+  <tr><td>6</td><td class="l mono">C′(A′ + B′)</td><td class="l">distributiva</td></tr>
+  <tr><td>7</td><td class="l mono">C′·(AB)′</td><td class="l"><b>1º teorema de De Morgan:</b> A′ + B′ = (A·B)′</td></tr>
+  <tr><td>8</td><td class="l mono"><b>(AB + C)′ = R′</b></td><td class="l"><b>2º teorema de De Morgan:</b> X′·Y′ = (X + Y)′, com X = AB e Y = C</td></tr>
+</table>
+<p><b>Por que De Morgan foi necessário aqui:</b> a simplificação comum para em K = A′C′ + B′C′, que pede três portas NOT, duas AND e uma OR. Os dois teoremas de De Morgan mostram que K é exatamente a negação de R. Como R já é calculado para T e U, K passa a custar uma única porta NOT, e o circuito final cai de 15 para 6 portas (seção 8).</p>
+<p><b>Verificações:</b> T + U = R(D + D′) = R; e T + U + K = R + R′ = 1. Logo as três saídas cobrem todos os casos e nunca acendem juntas.</p>
+
+<h2 class="pb">7. Mapas de Karnaugh</h2>
+<p>Linhas: AB; colunas: CD, ambas na ordem de Gray (00, 01, 11, 10). As bordas opostas são vizinhas, por isso alguns grupos aparecem divididos em duas partes.</p>
+<div class="grid3">
+  <figure><svg viewBox="0 0 330 254" class="kmap" role="img" aria-label="Mapa de Karnaugh de T = Σm(3,7,11,13,15)"><text x="8" y="16" class="kt">T = Σm(3,7,11,13,15)</text><text x="60" y="48" text-anchor="end" class="kl">AB \ CD</text><text x="93.0" y="50" text-anchor="middle" class="kl">00</text><text x="139.0" y="50" text-anchor="middle" class="kl">01</text><text x="185.0" y="50" text-anchor="middle" class="kl">11</text><text x="231.0" y="50" text-anchor="middle" class="kl">10</text><text x="60" y="90.0" text-anchor="end" class="kl">00</text><rect x="70" y="62" width="46" height="46" class="kc"/><text x="93.0" y="91.0" text-anchor="middle" class="kv">0</text><text x="74" y="73" class="km">m0</text><rect x="116" y="62" width="46" height="46" class="kc"/><text x="139.0" y="91.0" text-anchor="middle" class="kv">0</text><text x="120" y="73" class="km">m1</text><rect x="162" y="62" width="46" height="46" class="kc"/><text x="185.0" y="91.0" text-anchor="middle" class="kv on">1</text><text x="166" y="73" class="km">m3</text><rect x="208" y="62" width="46" height="46" class="kc"/><text x="231.0" y="91.0" text-anchor="middle" class="kv">0</text><text x="212" y="73" class="km">m2</text><text x="60" y="136.0" text-anchor="end" class="kl">01</text><rect x="70" y="108" width="46" height="46" class="kc"/><text x="93.0" y="137.0" text-anchor="middle" class="kv">0</text><text x="74" y="119" class="km">m4</text><rect x="116" y="108" width="46" height="46" class="kc"/><text x="139.0" y="137.0" text-anchor="middle" class="kv">0</text><text x="120" y="119" class="km">m5</text><rect x="162" y="108" width="46" height="46" class="kc"/><text x="185.0" y="137.0" text-anchor="middle" class="kv on">1</text><text x="166" y="119" class="km">m7</text><rect x="208" y="108" width="46" height="46" class="kc"/><text x="231.0" y="137.0" text-anchor="middle" class="kv">0</text><text x="212" y="119" class="km">m6</text><text x="60" y="182.0" text-anchor="end" class="kl">11</text><rect x="70" y="154" width="46" height="46" class="kc"/><text x="93.0" y="183.0" text-anchor="middle" class="kv">0</text><text x="74" y="165" class="km">m12</text><rect x="116" y="154" width="46" height="46" class="kc"/><text x="139.0" y="183.0" text-anchor="middle" class="kv on">1</text><text x="120" y="165" class="km">m13</text><rect x="162" y="154" width="46" height="46" class="kc"/><text x="185.0" y="183.0" text-anchor="middle" class="kv on">1</text><text x="166" y="165" class="km">m15</text><rect x="208" y="154" width="46" height="46" class="kc"/><text x="231.0" y="183.0" text-anchor="middle" class="kv">0</text><text x="212" y="165" class="km">m14</text><text x="60" y="228.0" text-anchor="end" class="kl">10</text><rect x="70" y="200" width="46" height="46" class="kc"/><text x="93.0" y="229.0" text-anchor="middle" class="kv">0</text><text x="74" y="211" class="km">m8</text><rect x="116" y="200" width="46" height="46" class="kc"/><text x="139.0" y="229.0" text-anchor="middle" class="kv">0</text><text x="120" y="211" class="km">m9</text><rect x="162" y="200" width="46" height="46" class="kc"/><text x="185.0" y="229.0" text-anchor="middle" class="kv on">1</text><text x="166" y="211" class="km">m11</text><rect x="208" y="200" width="46" height="46" class="kc"/><text x="231.0" y="229.0" text-anchor="middle" class="kv">0</text><text x="212" y="211" class="km">m10</text><rect x="166" y="66" width="38" height="176" rx="12" fill="#1f6feb" fill-opacity="0.10" stroke="#1f6feb" stroke-width="2.4"/><rect x="268" y="62" width="14" height="14" rx="3" fill="#1f6feb"/><text x="288" y="74" class="kg">C·D</text><rect x="124" y="162" width="76" height="30" rx="12" fill="#d1242f" fill-opacity="0.10" stroke="#d1242f" stroke-width="2.4"/><rect x="268" y="88" width="14" height="14" rx="3" fill="#d1242f"/><text x="288" y="100" class="kg">A·B·D</text></svg><figcaption><b>T:</b> coluna CD = 11 inteira (quatro células) → <b>C·D</b>; par m13–m15 → <b>A·B·D</b>. Resultado: T = CD + ABD.</figcaption></figure>
+  <figure><svg viewBox="0 0 330 254" class="kmap" role="img" aria-label="Mapa de Karnaugh de U = Σm(2,6,10,12,14)"><text x="8" y="16" class="kt">U = Σm(2,6,10,12,14)</text><text x="60" y="48" text-anchor="end" class="kl">AB \ CD</text><text x="93.0" y="50" text-anchor="middle" class="kl">00</text><text x="139.0" y="50" text-anchor="middle" class="kl">01</text><text x="185.0" y="50" text-anchor="middle" class="kl">11</text><text x="231.0" y="50" text-anchor="middle" class="kl">10</text><text x="60" y="90.0" text-anchor="end" class="kl">00</text><rect x="70" y="62" width="46" height="46" class="kc"/><text x="93.0" y="91.0" text-anchor="middle" class="kv">0</text><text x="74" y="73" class="km">m0</text><rect x="116" y="62" width="46" height="46" class="kc"/><text x="139.0" y="91.0" text-anchor="middle" class="kv">0</text><text x="120" y="73" class="km">m1</text><rect x="162" y="62" width="46" height="46" class="kc"/><text x="185.0" y="91.0" text-anchor="middle" class="kv">0</text><text x="166" y="73" class="km">m3</text><rect x="208" y="62" width="46" height="46" class="kc"/><text x="231.0" y="91.0" text-anchor="middle" class="kv on">1</text><text x="212" y="73" class="km">m2</text><text x="60" y="136.0" text-anchor="end" class="kl">01</text><rect x="70" y="108" width="46" height="46" class="kc"/><text x="93.0" y="137.0" text-anchor="middle" class="kv">0</text><text x="74" y="119" class="km">m4</text><rect x="116" y="108" width="46" height="46" class="kc"/><text x="139.0" y="137.0" text-anchor="middle" class="kv">0</text><text x="120" y="119" class="km">m5</text><rect x="162" y="108" width="46" height="46" class="kc"/><text x="185.0" y="137.0" text-anchor="middle" class="kv">0</text><text x="166" y="119" class="km">m7</text><rect x="208" y="108" width="46" height="46" class="kc"/><text x="231.0" y="137.0" text-anchor="middle" class="kv on">1</text><text x="212" y="119" class="km">m6</text><text x="60" y="182.0" text-anchor="end" class="kl">11</text><rect x="70" y="154" width="46" height="46" class="kc"/><text x="93.0" y="183.0" text-anchor="middle" class="kv on">1</text><text x="74" y="165" class="km">m12</text><rect x="116" y="154" width="46" height="46" class="kc"/><text x="139.0" y="183.0" text-anchor="middle" class="kv">0</text><text x="120" y="165" class="km">m13</text><rect x="162" y="154" width="46" height="46" class="kc"/><text x="185.0" y="183.0" text-anchor="middle" class="kv">0</text><text x="166" y="165" class="km">m15</text><rect x="208" y="154" width="46" height="46" class="kc"/><text x="231.0" y="183.0" text-anchor="middle" class="kv on">1</text><text x="212" y="165" class="km">m14</text><text x="60" y="228.0" text-anchor="end" class="kl">10</text><rect x="70" y="200" width="46" height="46" class="kc"/><text x="93.0" y="229.0" text-anchor="middle" class="kv">0</text><text x="74" y="211" class="km">m8</text><rect x="116" y="200" width="46" height="46" class="kc"/><text x="139.0" y="229.0" text-anchor="middle" class="kv">0</text><text x="120" y="211" class="km">m9</text><rect x="162" y="200" width="46" height="46" class="kc"/><text x="185.0" y="229.0" text-anchor="middle" class="kv">0</text><text x="166" y="211" class="km">m11</text><rect x="208" y="200" width="46" height="46" class="kc"/><text x="231.0" y="229.0" text-anchor="middle" class="kv on">1</text><text x="212" y="211" class="km">m10</text><rect x="212" y="66" width="38" height="176" rx="12" fill="#1f6feb" fill-opacity="0.10" stroke="#1f6feb" stroke-width="2.4"/><rect x="268" y="62" width="14" height="14" rx="3" fill="#1f6feb"/><text x="288" y="74" class="kg">C·D′</text><rect x="78" y="162" width="30" height="30" rx="12" fill="#d1242f" fill-opacity="0.10" stroke="#d1242f" stroke-width="2.4"/><rect x="216" y="162" width="30" height="30" rx="12" fill="#d1242f" fill-opacity="0.10" stroke="#d1242f" stroke-width="2.4"/><rect x="268" y="88" width="14" height="14" rx="3" fill="#d1242f"/><text x="288" y="100" class="kg">A·B·D′</text></svg><figcaption><b>U:</b> coluna CD = 10 inteira → <b>C·D′</b>; par m12–m14, que dá a volta entre as colunas 00 e 10 → <b>A·B·D′</b>. Resultado: U = CD′ + ABD′.</figcaption></figure>
+  <figure><svg viewBox="0 0 330 254" class="kmap" role="img" aria-label="Mapa de Karnaugh de K = Σm(0,1,4,5,8,9)"><text x="8" y="16" class="kt">K = Σm(0,1,4,5,8,9)</text><text x="60" y="48" text-anchor="end" class="kl">AB \ CD</text><text x="93.0" y="50" text-anchor="middle" class="kl">00</text><text x="139.0" y="50" text-anchor="middle" class="kl">01</text><text x="185.0" y="50" text-anchor="middle" class="kl">11</text><text x="231.0" y="50" text-anchor="middle" class="kl">10</text><text x="60" y="90.0" text-anchor="end" class="kl">00</text><rect x="70" y="62" width="46" height="46" class="kc"/><text x="93.0" y="91.0" text-anchor="middle" class="kv on">1</text><text x="74" y="73" class="km">m0</text><rect x="116" y="62" width="46" height="46" class="kc"/><text x="139.0" y="91.0" text-anchor="middle" class="kv on">1</text><text x="120" y="73" class="km">m1</text><rect x="162" y="62" width="46" height="46" class="kc"/><text x="185.0" y="91.0" text-anchor="middle" class="kv">0</text><text x="166" y="73" class="km">m3</text><rect x="208" y="62" width="46" height="46" class="kc"/><text x="231.0" y="91.0" text-anchor="middle" class="kv">0</text><text x="212" y="73" class="km">m2</text><text x="60" y="136.0" text-anchor="end" class="kl">01</text><rect x="70" y="108" width="46" height="46" class="kc"/><text x="93.0" y="137.0" text-anchor="middle" class="kv on">1</text><text x="74" y="119" class="km">m4</text><rect x="116" y="108" width="46" height="46" class="kc"/><text x="139.0" y="137.0" text-anchor="middle" class="kv on">1</text><text x="120" y="119" class="km">m5</text><rect x="162" y="108" width="46" height="46" class="kc"/><text x="185.0" y="137.0" text-anchor="middle" class="kv">0</text><text x="166" y="119" class="km">m7</text><rect x="208" y="108" width="46" height="46" class="kc"/><text x="231.0" y="137.0" text-anchor="middle" class="kv">0</text><text x="212" y="119" class="km">m6</text><text x="60" y="182.0" text-anchor="end" class="kl">11</text><rect x="70" y="154" width="46" height="46" class="kc"/><text x="93.0" y="183.0" text-anchor="middle" class="kv">0</text><text x="74" y="165" class="km">m12</text><rect x="116" y="154" width="46" height="46" class="kc"/><text x="139.0" y="183.0" text-anchor="middle" class="kv">0</text><text x="120" y="165" class="km">m13</text><rect x="162" y="154" width="46" height="46" class="kc"/><text x="185.0" y="183.0" text-anchor="middle" class="kv">0</text><text x="166" y="165" class="km">m15</text><rect x="208" y="154" width="46" height="46" class="kc"/><text x="231.0" y="183.0" text-anchor="middle" class="kv">0</text><text x="212" y="165" class="km">m14</text><text x="60" y="228.0" text-anchor="end" class="kl">10</text><rect x="70" y="200" width="46" height="46" class="kc"/><text x="93.0" y="229.0" text-anchor="middle" class="kv on">1</text><text x="74" y="211" class="km">m8</text><rect x="116" y="200" width="46" height="46" class="kc"/><text x="139.0" y="229.0" text-anchor="middle" class="kv on">1</text><text x="120" y="211" class="km">m9</text><rect x="162" y="200" width="46" height="46" class="kc"/><text x="185.0" y="229.0" text-anchor="middle" class="kv">0</text><text x="166" y="211" class="km">m11</text><rect x="208" y="200" width="46" height="46" class="kc"/><text x="231.0" y="229.0" text-anchor="middle" class="kv">0</text><text x="212" y="211" class="km">m10</text><rect x="74" y="66" width="84" height="84" rx="12" fill="#1f6feb" fill-opacity="0.10" stroke="#1f6feb" stroke-width="2.4"/><rect x="268" y="62" width="14" height="14" rx="3" fill="#1f6feb"/><text x="288" y="74" class="kg">A′·C′</text><rect x="78" y="70" width="76" height="30" rx="12" fill="#d1242f" fill-opacity="0.10" stroke="#d1242f" stroke-width="2.4"/><rect x="78" y="208" width="76" height="30" rx="12" fill="#d1242f" fill-opacity="0.10" stroke="#d1242f" stroke-width="2.4"/><rect x="268" y="88" width="14" height="14" rx="3" fill="#d1242f"/><text x="288" y="100" class="kg">B′·C′</text></svg><figcaption><b>K:</b> quadra m0, m1, m4, m5 → <b>A′·C′</b>; quadra m0, m1, m8, m9, que dá a volta entre as linhas 00 e 10 → <b>B′·C′</b>. Resultado: K = A′C′ + B′C′.</figcaption></figure>
+  <div>
+    <h3>Comparação com a álgebra</h3>
+    <table>
+      <tr><th>Saída</th><th>Álgebra</th><th>Karnaugh</th><th>Igual?</th></tr>
+      <tr><td>T</td><td class="mono">CD + ABD</td><td class="mono">CD + ABD</td><td class="ok">sim</td></tr>
+      <tr><td>U</td><td class="mono">CD′ + ABD′</td><td class="mono">CD′ + ABD′</td><td class="ok">sim</td></tr>
+      <tr><td>K</td><td class="mono">A′C′ + B′C′</td><td class="mono">A′C′ + B′C′</td><td class="ok">sim</td></tr>
+    </table>
+    <p>Os dois métodos chegam às mesmas somas de produtos mínimas. O mapa deixa os grupos visíveis; a álgebra mostra por que eles são válidos, inclusive o uso de m15 (em T) e m0/m1 (em K) em dois grupos, que é a idempotência.</p>
+  </div>
+</div>
+
+<h2 class="pb">8. Circuitos lógicos e comparação de portas</h2>
+<p><b>Critério de contagem (igual para todos):</b> cada porta AND/OR de <i>n</i> entradas conta como <i>n − 1</i> portas de 2 entradas; cada variável negada usa uma porta NOT, compartilhada pelas saídas.</p>
+<svg viewBox="0 0 640 680" class="circ big" role="img" aria-label="Circuito original — forma canônica (soma de mintermos)"><text x="8" y="20" class="ct">Circuito original — forma canônica (soma de mintermos)</text><text x="202" y="58" text-anchor="end" class="lit">A′·B′·C·D</text><path d="M210,44 h17.0 a13.0,13.0 0 0 1 0,26 h-17.0 z" class="g"/><text x="223" y="61" class="gn">4</text><text x="202" y="92" text-anchor="end" class="lit">A′·B·C·D</text><path d="M210,78 h17.0 a13.0,13.0 0 0 1 0,26 h-17.0 z" class="g"/><text x="223" y="95" class="gn">4</text><text x="202" y="126" text-anchor="end" class="lit">A·B′·C·D</text><path d="M210,112 h17.0 a13.0,13.0 0 0 1 0,26 h-17.0 z" class="g"/><text x="223" y="129" class="gn">4</text><text x="202" y="160" text-anchor="end" class="lit">A·B·C′·D</text><path d="M210,146 h17.0 a13.0,13.0 0 0 1 0,26 h-17.0 z" class="g"/><text x="223" y="163" class="gn">4</text><text x="202" y="194" text-anchor="end" class="lit">A·B·C·D</text><path d="M210,180 h17.0 a13.0,13.0 0 0 1 0,26 h-17.0 z" class="g"/><text x="223" y="197" class="gn">4</text><path d="M240.0,57 C290.0,57 320,125.0 368,125.0" class="w"/><path d="M240.0,91 C290.0,91 320,125.0 368,125.0" class="w"/><path d="M240.0,125 C290.0,125 320,125.0 368,125.0" class="w"/><path d="M240.0,159 C290.0,159 320,125.0 368,125.0" class="w"/><path d="M240.0,193 C290.0,193 320,125.0 368,125.0" class="w"/><path d="M360,110.0 q14.0,15.0 0,30 q26.0,0 40,-15.0 q-14.0,-15.0 -40,-15.0 z" class="g"/><text x="374" y="130.0" class="gn">5</text><line x1="400" y1="125.0" x2="460" y2="125.0" class="w"/><circle cx="466" cy="125.0" r="6" class="out"/><text x="480" y="130.0" class="on">T</text><text x="202" y="250" text-anchor="end" class="lit">A′·B′·C·D′</text><path d="M210,236 h17.0 a13.0,13.0 0 0 1 0,26 h-17.0 z" class="g"/><text x="223" y="253" class="gn">4</text><text x="202" y="284" text-anchor="end" class="lit">A′·B·C·D′</text><path d="M210,270 h17.0 a13.0,13.0 0 0 1 0,26 h-17.0 z" class="g"/><text x="223" y="287" class="gn">4</text><text x="202" y="318" text-anchor="end" class="lit">A·B′·C·D′</text><path d="M210,304 h17.0 a13.0,13.0 0 0 1 0,26 h-17.0 z" class="g"/><text x="223" y="321" class="gn">4</text><text x="202" y="352" text-anchor="end" class="lit">A·B·C′·D′</text><path d="M210,338 h17.0 a13.0,13.0 0 0 1 0,26 h-17.0 z" class="g"/><text x="223" y="355" class="gn">4</text><text x="202" y="386" text-anchor="end" class="lit">A·B·C·D′</text><path d="M210,372 h17.0 a13.0,13.0 0 0 1 0,26 h-17.0 z" class="g"/><text x="223" y="389" class="gn">4</text><path d="M240.0,249 C290.0,249 320,317.0 368,317.0" class="w"/><path d="M240.0,283 C290.0,283 320,317.0 368,317.0" class="w"/><path d="M240.0,317 C290.0,317 320,317.0 368,317.0" class="w"/><path d="M240.0,351 C290.0,351 320,317.0 368,317.0" class="w"/><path d="M240.0,385 C290.0,385 320,317.0 368,317.0" class="w"/><path d="M360,302.0 q14.0,15.0 0,30 q26.0,0 40,-15.0 q-14.0,-15.0 -40,-15.0 z" class="g"/><text x="374" y="322.0" class="gn">5</text><line x1="400" y1="317.0" x2="460" y2="317.0" class="w"/><circle cx="466" cy="317.0" r="6" class="out"/><text x="480" y="322.0" class="on">U</text><text x="202" y="442" text-anchor="end" class="lit">A′·B′·C′·D′</text><path d="M210,428 h17.0 a13.0,13.0 0 0 1 0,26 h-17.0 z" class="g"/><text x="223" y="445" class="gn">4</text><text x="202" y="476" text-anchor="end" class="lit">A′·B′·C′·D</text><path d="M210,462 h17.0 a13.0,13.0 0 0 1 0,26 h-17.0 z" class="g"/><text x="223" y="479" class="gn">4</text><text x="202" y="510" text-anchor="end" class="lit">A′·B·C′·D′</text><path d="M210,496 h17.0 a13.0,13.0 0 0 1 0,26 h-17.0 z" class="g"/><text x="223" y="513" class="gn">4</text><text x="202" y="544" text-anchor="end" class="lit">A′·B·C′·D</text><path d="M210,530 h17.0 a13.0,13.0 0 0 1 0,26 h-17.0 z" class="g"/><text x="223" y="547" class="gn">4</text><text x="202" y="578" text-anchor="end" class="lit">A·B′·C′·D′</text><path d="M210,564 h17.0 a13.0,13.0 0 0 1 0,26 h-17.0 z" class="g"/><text x="223" y="581" class="gn">4</text><text x="202" y="612" text-anchor="end" class="lit">A·B′·C′·D</text><path d="M210,598 h17.0 a13.0,13.0 0 0 1 0,26 h-17.0 z" class="g"/><text x="223" y="615" class="gn">4</text><path d="M240.0,441 C290.0,441 320,526.0 368,526.0" class="w"/><path d="M240.0,475 C290.0,475 320,526.0 368,526.0" class="w"/><path d="M240.0,509 C290.0,509 320,526.0 368,526.0" class="w"/><path d="M240.0,543 C290.0,543 320,526.0 368,526.0" class="w"/><path d="M240.0,577 C290.0,577 320,526.0 368,526.0" class="w"/><path d="M240.0,611 C290.0,611 320,526.0 368,526.0" class="w"/><path d="M360,511.0 q14.0,15.0 0,30 q26.0,0 40,-15.0 q-14.0,-15.0 -40,-15.0 z" class="g"/><text x="374" y="531.0" class="gn">6</text><line x1="400" y1="526.0" x2="460" y2="526.0" class="w"/><circle cx="466" cy="526.0" r="6" class="out"/><text x="480" y="531.0" class="on">K</text><text x="8" y="670" class="nota">Cada AND recebe 4 literais; A′, B′, C′ e D′ vêm de 4 portas NOT compartilhadas. O número dentro da porta é o total de entradas.</text></svg>
+<svg viewBox="0 0 640 340" class="circ" role="img" aria-label="Circuito simplificado — somas de produtos mínimas (Karnaugh)"><text x="8" y="20" class="ct">Circuito simplificado — somas de produtos mínimas (Karnaugh)</text><text x="202" y="58" text-anchor="end" class="lit">C·D</text><path d="M210,44 h17.0 a13.0,13.0 0 0 1 0,26 h-17.0 z" class="g"/><text x="223" y="61" class="gn">2</text><text x="202" y="92" text-anchor="end" class="lit">A·B·D</text><path d="M210,78 h17.0 a13.0,13.0 0 0 1 0,26 h-17.0 z" class="g"/><text x="223" y="95" class="gn">3</text><path d="M240.0,57 C290.0,57 320,74.0 368,74.0" class="w"/><path d="M240.0,91 C290.0,91 320,74.0 368,74.0" class="w"/><path d="M360,59.0 q14.0,15.0 0,30 q26.0,0 40,-15.0 q-14.0,-15.0 -40,-15.0 z" class="g"/><text x="374" y="79.0" class="gn">2</text><line x1="400" y1="74.0" x2="460" y2="74.0" class="w"/><circle cx="466" cy="74.0" r="6" class="out"/><text x="480" y="79.0" class="on">T</text><text x="202" y="148" text-anchor="end" class="lit">C·D′</text><path d="M210,134 h17.0 a13.0,13.0 0 0 1 0,26 h-17.0 z" class="g"/><text x="223" y="151" class="gn">2</text><text x="202" y="182" text-anchor="end" class="lit">A·B·D′</text><path d="M210,168 h17.0 a13.0,13.0 0 0 1 0,26 h-17.0 z" class="g"/><text x="223" y="185" class="gn">3</text><path d="M240.0,147 C290.0,147 320,164.0 368,164.0" class="w"/><path d="M240.0,181 C290.0,181 320,164.0 368,164.0" class="w"/><path d="M360,149.0 q14.0,15.0 0,30 q26.0,0 40,-15.0 q-14.0,-15.0 -40,-15.0 z" class="g"/><text x="374" y="169.0" class="gn">2</text><line x1="400" y1="164.0" x2="460" y2="164.0" class="w"/><circle cx="466" cy="164.0" r="6" class="out"/><text x="480" y="169.0" class="on">U</text><text x="202" y="238" text-anchor="end" class="lit">A′·C′</text><path d="M210,224 h17.0 a13.0,13.0 0 0 1 0,26 h-17.0 z" class="g"/><text x="223" y="241" class="gn">2</text><text x="202" y="272" text-anchor="end" class="lit">B′·C′</text><path d="M210,258 h17.0 a13.0,13.0 0 0 1 0,26 h-17.0 z" class="g"/><text x="223" y="275" class="gn">2</text><path d="M240.0,237 C290.0,237 320,254.0 368,254.0" class="w"/><path d="M240.0,271 C290.0,271 320,254.0 368,254.0" class="w"/><path d="M360,239.0 q14.0,15.0 0,30 q26.0,0 40,-15.0 q-14.0,-15.0 -40,-15.0 z" class="g"/><text x="374" y="259.0" class="gn">2</text><line x1="400" y1="254.0" x2="460" y2="254.0" class="w"/><circle cx="466" cy="254.0" r="6" class="out"/><text x="480" y="259.0" class="on">K</text><text x="8" y="330" class="nota">A′, B′, C′ e D′ vêm de 4 portas NOT compartilhadas; nenhuma AND/OR é compartilhada entre saídas.</text></svg>
+<figure>
+  <img src="../prints/m13_ABCD_1101.jpg" alt="Circuito fatorado montado no Logic.ly">
+  <figcaption><b>Circuito final (fatorado), montado no Logic.ly:</b> AND(A,B) → OR(·,C) = R; T = AND(R,D); U = AND(R,D′); K = NOT(R). Na imagem, A = 1, B = 1, C = 0, D = 1 (m13), e só a lâmpada T está acesa.</figcaption>
+</figure>
+<table>
+  <tr><th class="txt">Circuito</th><th>AND (2 ent.)</th><th>OR (2 ent.)</th><th>NOT</th><th>Total</th><th>Literais</th></tr>
+  <tr><td class="l">Original: forma canônica (16 mintermos)</td><td>48</td><td>13</td><td>4</td><td><b>65</b></td><td>64</td></tr>
+  <tr><td class="l">Simplificado: Karnaugh, sem compartilhar entre saídas</td><td>8</td><td>3</td><td>4</td><td><b>15</b></td><td>14</td></tr>
+  <tr><td class="l">Final: fatorado com R compartilhado (De Morgan), no Logic.ly</td><td>3</td><td>1</td><td>2</td><td><b>6</b></td><td>4 entradas</td></tr>
+</table>
+<p>Cálculo do original: T e U têm 5 mintermos cada (5 × 3 AND + 4 OR = 19 portas cada); K tem 6 (6 × 3 AND + 5 OR = 23); somando as 4 NOT, são 65 portas. O simplificado tem T = 4, U = 4 e K = 3, mais 4 NOT: 15 portas. A fatoração com R compartilhado reduz o circuito em <b>91%</b> em relação ao original, sem mudar nenhuma linha da tabela-verdade (seção 10).</p>
+
+<h2>9. Implementação</h2>
+<h3>Montagem no simulador Logic.ly</h3>
+<ol class="passos">
+  <li>Abrir <code>https://logic.ly/demo/</code> e fechar a janela de boas-vindas.</li>
+  <li>Arrastar 4 <i>Toggle Switch</i> (A, B, C, D), 3 <i>AND Gate</i>, 1 <i>OR Gate</i>, 2 <i>NOT Gate</i> e 3 <i>Light Bulb</i> (K, T, U).</li>
+  <li>Ligar A e B na 1ª AND; a saída dela e C na OR (sinal R).</li>
+  <li>Ligar R a: NOT (→ lâmpada K); 2ª AND junto com D (→ lâmpada T); 3ª AND junto com D′ (→ lâmpada U). D′ vem da 2ª NOT, ligada a D.</li>
+  <li>Clicar nas chaves para escolher as entradas (fio azul = 1) e observar qual lâmpada acende.</li>
+</ol>
+<p>Os rótulos (<i>Label</i>) no circuito explicam cada entrada e saída, para que quem testar entenda a orientação sem consultar a tabela.</p>
+<h3>Entradas inválidas e respostas compreensíveis</h3>
+<p>No Logic.ly cada entrada é uma <i>Toggle Switch</i>, que só assume 0 (desligada) ou 1 (ligada). Valores fora de {0, 1}, campos vazios ou textos não podem ser informados, ou seja, <b>a entrada inválida é impedida pela própria interface</b>. Ainda assim, o circuito trata o estado lógico:</p>
+<ul>
+  <li>as saídas são exclusivas (T + U + K = 1, seção 6): em qualquer combinação acende <b>exatamente uma</b> lâmpada, nunca nenhuma ou duas;</li>
+  <li>cada entrada e cada lâmpada tem um rótulo em linguagem simples, para que o cidadão entenda a pergunta e a orientação sem conhecer a tabela-verdade;</li>
+  <li>a saída K não diz "sem direito", e sim "procurar o CRAS", porque o modelo não cobre todas as hipóteses da lei.</li>
+</ul>
+<p>Os dados usados são apenas quatro respostas sim/não: nenhum nome, CPF, NIS ou endereço é informado ao circuito.</p>
+
+<h2 class="pb">10. Validação com as 16 combinações</h2>
+<p>Cada uma das 16 combinações foi aplicada às chaves do Logic.ly. A lâmpada acesa foi comparada com a <b>regra original</b> (tabela-verdade, seção 4) e com a <b>expressão simplificada</b> (T = CD + ABD, U = CD′ + ABD′, K = A′C′ + B′C′) calculada linha a linha.</p>
+<table>
+  <tr><th>m</th><th>ABCD</th><th>Regra original (tabela-verdade)</th><th>Expressão simplificada</th><th>Lâmpada acesa no Logic.ly</th><th>Equivalente</th></tr>
+  <tr><td>m0</td><td>0000</td><td>K</td><td>K</td><td>K</td><td class='ok'>✔</td></tr><tr><td>m1</td><td>0001</td><td>K</td><td>K</td><td>K</td><td class='ok'>✔</td></tr><tr><td>m2</td><td>0010</td><td>U</td><td>U</td><td>U</td><td class='ok'>✔</td></tr><tr><td>m3</td><td>0011</td><td>T</td><td>T</td><td>T</td><td class='ok'>✔</td></tr><tr><td>m4</td><td>0100</td><td>K</td><td>K</td><td>K</td><td class='ok'>✔</td></tr><tr><td>m5</td><td>0101</td><td>K</td><td>K</td><td>K</td><td class='ok'>✔</td></tr><tr><td>m6</td><td>0110</td><td>U</td><td>U</td><td>U</td><td class='ok'>✔</td></tr><tr><td>m7</td><td>0111</td><td>T</td><td>T</td><td>T</td><td class='ok'>✔</td></tr><tr><td>m8</td><td>1000</td><td>K</td><td>K</td><td>K</td><td class='ok'>✔</td></tr><tr><td>m9</td><td>1001</td><td>K</td><td>K</td><td>K</td><td class='ok'>✔</td></tr><tr><td>m10</td><td>1010</td><td>U</td><td>U</td><td>U</td><td class='ok'>✔</td></tr><tr><td>m11</td><td>1011</td><td>T</td><td>T</td><td>T</td><td class='ok'>✔</td></tr><tr><td>m12</td><td>1100</td><td>U</td><td>U</td><td>U</td><td class='ok'>✔</td></tr><tr><td>m13</td><td>1101</td><td>T</td><td>T</td><td>T</td><td class='ok'>✔</td></tr><tr><td>m14</td><td>1110</td><td>U</td><td>U</td><td>U</td><td class='ok'>✔</td></tr><tr><td>m15</td><td>1111</td><td>T</td><td>T</td><td>T</td><td class='ok'>✔</td></tr>
+</table>
+<p><b>Resultado: 16 de 16 combinações equivalentes nas três representações</b>, com exatamente uma orientação por linha.</p>
+<h3>Prints da simulação no Logic.ly (todas as combinações)</h3>
+<div class="galeria"><figure class="thumb"><img src="../prints/m00_ABCD_0000.jpg" alt="Logic.ly, entradas 0000"><figcaption>m0 · ABCD = 0000 → <b>K</b></figcaption></figure><figure class="thumb"><img src="../prints/m01_ABCD_0001.jpg" alt="Logic.ly, entradas 0001"><figcaption>m1 · ABCD = 0001 → <b>K</b></figcaption></figure><figure class="thumb"><img src="../prints/m02_ABCD_0010.jpg" alt="Logic.ly, entradas 0010"><figcaption>m2 · ABCD = 0010 → <b>U</b></figcaption></figure><figure class="thumb"><img src="../prints/m03_ABCD_0011.jpg" alt="Logic.ly, entradas 0011"><figcaption>m3 · ABCD = 0011 → <b>T</b></figcaption></figure><figure class="thumb"><img src="../prints/m04_ABCD_0100.jpg" alt="Logic.ly, entradas 0100"><figcaption>m4 · ABCD = 0100 → <b>K</b></figcaption></figure><figure class="thumb"><img src="../prints/m05_ABCD_0101.jpg" alt="Logic.ly, entradas 0101"><figcaption>m5 · ABCD = 0101 → <b>K</b></figcaption></figure><figure class="thumb"><img src="../prints/m06_ABCD_0110.jpg" alt="Logic.ly, entradas 0110"><figcaption>m6 · ABCD = 0110 → <b>U</b></figcaption></figure><figure class="thumb"><img src="../prints/m07_ABCD_0111.jpg" alt="Logic.ly, entradas 0111"><figcaption>m7 · ABCD = 0111 → <b>T</b></figcaption></figure><figure class="thumb"><img src="../prints/m08_ABCD_1000.jpg" alt="Logic.ly, entradas 1000"><figcaption>m8 · ABCD = 1000 → <b>K</b></figcaption></figure><figure class="thumb"><img src="../prints/m09_ABCD_1001.jpg" alt="Logic.ly, entradas 1001"><figcaption>m9 · ABCD = 1001 → <b>K</b></figcaption></figure><figure class="thumb"><img src="../prints/m10_ABCD_1010.jpg" alt="Logic.ly, entradas 1010"><figcaption>m10 · ABCD = 1010 → <b>U</b></figcaption></figure><figure class="thumb"><img src="../prints/m11_ABCD_1011.jpg" alt="Logic.ly, entradas 1011"><figcaption>m11 · ABCD = 1011 → <b>T</b></figcaption></figure><figure class="thumb"><img src="../prints/m12_ABCD_1100.jpg" alt="Logic.ly, entradas 1100"><figcaption>m12 · ABCD = 1100 → <b>U</b></figcaption></figure><figure class="thumb"><img src="../prints/m13_ABCD_1101.jpg" alt="Logic.ly, entradas 1101"><figcaption>m13 · ABCD = 1101 → <b>T</b></figcaption></figure><figure class="thumb"><img src="../prints/m14_ABCD_1110.jpg" alt="Logic.ly, entradas 1110"><figcaption>m14 · ABCD = 1110 → <b>U</b></figcaption></figure><figure class="thumb"><img src="../prints/m15_ABCD_1111.jpg" alt="Logic.ly, entradas 1111"><figcaption>m15 · ABCD = 1111 → <b>T</b></figcaption></figure></div>
+
+
+<h2>11. Limitações, privacidade e responsabilidade</h2>
+<ul>
+  <li><b>Não é canal oficial.</b> Quem decide é a distribuidora, com base no CadÚnico. O resultado T é um indício e não garante o desconto.</li>
+  <li><b>Equivalência lógica não é validade jurídica.</b> A seção 10 mostra que tabela-verdade, expressão simplificada e circuito dão o mesmo resultado. Isso não prova que as regras escolhidas estão completas ou atualizadas: essa parte depende das fontes da seção 2.</li>
+  <li><b>Saídas T e U cobrem só parte da lei.</b> T é indício, não concessão; U não identifica qual condição de D falhou; nenhuma saída exclui as hipóteses que ficaram fora do modelo.</li>
+  <li><b>Escopo parcial.</b> Não modela o § 1º (doença que exige aparelho elétrico), as regras de famílias indígenas e quilombolas, a atualização cadastral nem a titularidade da conta. A saída K não significa "sem direito".</li>
+  <li><b>As respostas dependem do cidadão.</b> O circuito não confere renda nem cadastro; uma resposta errada gera uma orientação errada.</li>
+  <li><b>Privacidade.</b> Só quatro respostas sim/não; nada de nome, CPF, NIS, endereço ou número da instalação. Nada é gravado.</li>
+  <li><b>Legislação muda.</b> As regras valem para a data de consulta (12 nov. 2026) e devem ser revisadas a cada alteração da lei.</li>
+</ul>
+
+<h2>12. Instruções de execução</h2>
+<ol class="passos">
+  <li>Acessar <code>https://logic.ly/demo/</code> em um navegador (não precisa instalar nada) e fechar a janela de boas-vindas.</li>
+  <li>Montar o circuito conforme a seção 9 e a figura da seção 8: 4 chaves, 3 AND, 1 OR, 2 NOT e 3 lâmpadas.</li>
+  <li>Clicar nas chaves A, B, C e D para definir as respostas (fio azul = 1 = sim).</li>
+  <li>Ler a orientação no rótulo da lâmpada acesa (T, U ou K).</li>
+  <li>Para conferir, repetir as 16 combinações da tabela-verdade (seção 4) e comparar com os prints da seção 10.</li>
+</ol>
+
+<h2>Referências</h2>
+<ol class="ref">
+  <li>BRASIL. <b>Lei nº 12.212, de 20 de janeiro de 2010.</b> Dispõe sobre a Tarifa Social de Energia Elétrica. Texto compilado. Presidência da República. Disponível em: https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12212.htm. Acesso em: 12 nov. 2026.</li>
+  <li>BRASIL. <b>Lei nº 12.212, de 20 de janeiro de 2010</b> — norma atualizada. Câmara dos Deputados, Legislação Informatizada. Disponível em: https://www2.camara.leg.br/legin/fed/lei/2010/lei-12212-20-janeiro-2010-600945-normaatualizada-pl.html. Acesso em: 12 nov. 2026.</li>
+  <li>BRASIL. <b>Lei nº 15.235, de 8 de outubro de 2025</b> (conversão da Medida Provisória nº 1.300/2025), que deu nova redação aos arts. 1º e 2º, § 4º, da Lei nº 12.212/2010, conforme indicado no texto compilado acima. Disponível em: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/l15235.htm. Acesso em: 12 nov. 2026.</li>
+  <li>LOGIC.LY. <b>Logic.ly Online Demo</b> — simulador de circuitos digitais. Disponível em: https://logic.ly/demo/. Acesso em: 12 nov. 2026.</li>
+</ol>
+
+</body>
+</html>

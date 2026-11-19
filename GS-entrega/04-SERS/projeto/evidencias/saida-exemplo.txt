@@ -1,0 +1,40 @@
+Citizen Assist AI — energia em casa: quanto custa o banho quente e como gastar menos
+Protótipo educacional. Não é canal oficial e não guarda o que você digitar. Não informe nome, CPF ou endereço.
+
+Cenário de referência documentado em docs/analise.md (valores sugeridos, não medidos).
+
+================ RESULTADO ================
+Hoje o banho gasta cerca de 88 kWh por mês (5.500 W × 8 min × 4 banhos × 30 dias), ou R$ 1.003 por ano na conta.
+
+Comparação para a mesma família, em 12 meses:
+Opção       kWh/mês  Energia/ano  Investimento  Economia/ano   Retorno  CO2 kg/ano  Total 10 anos
+referencia     88,0     R$ 1.003          R$ 0          R$ 0         —        40,7      R$ 10.032
+A              55,0       R$ 627          R$ 0        R$ 376         —        25,4       R$ 6.270
+B              35,2       R$ 401      R$ 3.000        R$ 502  6,0 anos        16,3       R$ 8.013
+A+B            22,0       R$ 251      R$ 3.000        R$ 652 10,9 anos        10,2       R$ 6.508
+  Economia/ano: em relação à referência, já descontada a manutenção. Retorno: anos para a economia pagar o
+  investimento; em A+B conta só o que o aquecedor economiza além de A. Tarifa mantida constante.
+  referencia: Referência: chuveiro elétrico como é usado hoje
+  A: A — Economia: banho mais curto / menor potência
+  B: B — Renovável: aquecedor solar com apoio elétrico
+  A+B: A + B — banho mais curto com aquecedor solar (retorno do solar além de A)
+
+O que recomendamos:
+ 1. Comece pela alternativa A: ela não custa nada e evita cerca de 396 kWh por ano, perto de R$ 376 por ano na conta.
+ 2. O aquecedor solar (B), sem mudar o banho, evita cerca de 634 kWh por ano e se pagaria em cerca de 6,0 anos (investimento de R$ 3.000). Em 10 anos, o custo total estimado é R$ 8.013, contra R$ 10.032 mantendo tudo como está.
+ 3. Atenção ao juntar as duas (A + B): o consumo do banho cai para 22 kWh por mês, o menor de todos, mas quem já toma banho mais curto tem menos a economizar com o sol. O aquecedor passa a render só R$ 276 por ano além de A, e o retorno do aquecedor sobe para cerca de 10,9 anos. Faça A primeiro e decida sobre B com um orçamento real.
+ 4. Meio ambiente: o banho como é hoje responde por cerca de 41 kg de CO2 por ano; com A seriam 25 kg e com B, 16 kg (eletricidade da rede brasileira). O aquecedor solar também tem impacto de fabricação e transporte, que esta conta não inclui.
+
+Limites desta estimativa:
+ - São estimativas, não garantias: o resultado depende do uso real, do clima, da tarifa e do orçamento do equipamento.
+ - A fração solar, o preço, a manutenção e a vida útil do aquecedor solar são hipóteses. Peça ao menos dois orçamentos e confirme com o instalador quanto do banho o sol cobre na sua cidade.
+ - O valor em reais usa a tarifa informada e ignora bandeiras tarifárias, iluminação pública e mudanças de imposto.
+ - Não mexa na instalação elétrica nem no telhado sem um profissional habilitado.
+ - Protótipo educacional: não é canal oficial e não guarda nenhuma informação digitada.
+
+De onde vêm os números:
+ - Fórmula: kWh = potência (kW) × horas de uso. Potência: etiqueta do chuveiro (Inmetro/PBE).
+ - Tarifa Social: Lei nº 12.212/2010, art. 1º (redação da Lei nº 15.235/2025): 100% de desconto até 80 kWh/mês.
+ - Emissões: fator médio do Sistema Interligado Nacional de 2023, 38,5 kg CO2/MWh (MCTI).
+ - Preço, fração solar, manutenção e vida útil do aquecedor solar: hipóteses, a trocar por orçamento real.
+ Lista completa, datas de consulta e fórmulas: docs/analise.md e docs/referencias.md

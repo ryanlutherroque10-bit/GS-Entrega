@@ -1,0 +1,53 @@
+# Conversa real com o assistente em 16/11/2026 (entradas enviadas pela entrada padrão; por isso não aparecem ao lado das perguntas)
+# Respostas: 4400 | ? | 10 | 3 | 1,00 | 60 | s | 6 | n | (Enter) | (Enter) | n
+# Situação: família com Tarifa Social, casa alugada, chuveiro de 4.400 W, 3 banhos de 10 min
+Citizen Assist AI — energia em casa: quanto custa o banho quente e como gastar menos
+Protótipo educacional. Não é canal oficial e não guarda o que você digitar. Não informe nome, CPF ou endereço.
+Enter aceita o valor entre colchetes; "?" mostra de onde ele vem; "sair" encerra.
+
+-- Como é o banho hoje --
+Potência do chuveiro em watts (está na etiqueta ou na embalagem) [5500]: Quantos minutos dura cada banho, em média [8]:     ESTIMADO: Exemplos públicos de consumo usam cerca de 30 a 32 minutos de chuveiro por dia na casa; com 4 banhos, isso dá 8 minutos por banho. Meça o seu com um relógio. Fonte: Exemplo de 5.500 W por 30 min/dia = 82,5 kWh/mês usado em guias públicos de consumo (docs/referencias.md, itens 4 e 5).
+Quantos minutos dura cada banho, em média [8]: Quantos banhos por dia na casa (somando todo mundo) [4]: 
+-- Sua conta de luz --
+Preço do kWh em reais (total da conta dividido pelos kWh do mês) [0.95]: Consumo do resto da casa em kWh por mês (kWh da conta menos o banho) [100]: A família recebe a Tarifa Social de Energia [n]: 
+-- Alternativa A: economizar --
+Para quantos minutos o banho poderia cair [5]: 
+-- Alternativa B: aquecedor solar (fonte renovável) --
+A casa é própria (ou o dono autoriza) e tem telhado ou laje que pega sol [s]: Preço do aquecedor solar instalado, em reais (use um orçamento, se tiver) [3000]: Quanto do banho o sol consegue aquecer, de 0 a 0,95 (pergunte ao instalador) [0.6]: 
+================ RESULTADO ================
+Hoje o banho gasta cerca de 66 kWh por mês (4.400 W × 10 min × 3 banhos × 30 dias), ou R$ 552 por ano na conta.
+
+Comparação para a mesma família, em 12 meses:
+Opção       kWh/mês  Energia/ano  Investimento  Economia/ano   Retorno  CO2 kg/ano  Total 10 anos
+referencia     66,0       R$ 552          R$ 0          R$ 0         —        30,5       R$ 5.520
+A              39,6       R$ 235          R$ 0        R$ 317         —        18,3       R$ 2.352
+B              26,4        R$ 77      R$ 3.000        R$ 375  8,0 anos        12,2       R$ 4.768
+A+B            15,8         R$ 0      R$ 3.000        R$ 452 22,2 anos         7,3       R$ 4.000
+  Economia/ano: em relação à referência, já descontada a manutenção. Retorno: anos para a economia pagar o
+  investimento; em A+B conta só o que o aquecedor economiza além de A. Tarifa mantida constante.
+  referencia: Referência: chuveiro elétrico como é usado hoje
+  A: A — Economia: banho mais curto / menor potência
+  B: B — Renovável: aquecedor solar com apoio elétrico
+  A+B: A + B — banho mais curto com aquecedor solar (retorno do solar além de A)
+
+O que recomendamos:
+ 1. Comece pela alternativa A: ela não custa nada e evita cerca de 317 kWh por ano, perto de R$ 317 por ano na conta.
+ 2. O aquecedor solar (B) não é indicado no seu caso agora: é preciso poder instalar no imóvel (casa própria ou autorização do proprietário) e ter telhado ou laje com sol.
+ 3. Tarifa Social: os primeiros 80 kWh do mês têm desconto de 100%. A economia em reais só aparece na parte do consumo acima desse limite; abaixo dele, economizar energia continua ajudando o meio ambiente e evita ultrapassar o limite.
+ 4. Meio ambiente: o banho como é hoje responde por cerca de 30 kg de CO2 por ano; com A seriam 18 kg e com B, 12 kg (eletricidade da rede brasileira). O aquecedor solar também tem impacto de fabricação e transporte, que esta conta não inclui.
+
+Limites desta estimativa:
+ - São estimativas, não garantias: o resultado depende do uso real, do clima, da tarifa e do orçamento do equipamento.
+ - A fração solar, o preço, a manutenção e a vida útil do aquecedor solar são hipóteses. Peça ao menos dois orçamentos e confirme com o instalador quanto do banho o sol cobre na sua cidade.
+ - O valor em reais usa a tarifa informada e ignora bandeiras tarifárias, iluminação pública e mudanças de imposto.
+ - Não mexa na instalação elétrica nem no telhado sem um profissional habilitado.
+ - Protótipo educacional: não é canal oficial e não guarda nenhuma informação digitada.
+
+De onde vêm os números:
+ - Fórmula: kWh = potência (kW) × horas de uso. Potência: etiqueta do chuveiro (Inmetro/PBE).
+ - Tarifa Social: Lei nº 12.212/2010, art. 1º (redação da Lei nº 15.235/2025): 100% de desconto até 80 kWh/mês.
+ - Emissões: fator médio do Sistema Interligado Nacional de 2023, 38,5 kg CO2/MWh (MCTI).
+ - Preço, fração solar, manutenção e vida útil do aquecedor solar: hipóteses, a trocar por orçamento real.
+ Lista completa, datas de consulta e fórmulas: docs/analise.md e docs/referencias.md
+
+Quer simular outra situação [n]: Até logo!

@@ -1,0 +1,78 @@
+{
+  "descricao": "Parâmetros padrão do assistente de energia. tipo: 'dado público' (valor publicado por fonte verificável), 'estimado' (valor típico justificado, não medido) ou 'hipótese' (suposição que o usuário deve trocar por um valor real).",
+  "data_da_consulta": "2026-11-16",
+  "periodo_de_referencia": "12 meses (mês de 30 dias); horizonte de 10 anos para o custo total",
+  "parametros": {
+    "potencia_w": {
+      "valor": 5500, "unidade": "W", "tipo": "estimado",
+      "justificativa": "Chuveiros elétricos residenciais ficam entre 4.400 W e 7.700 W; 5.500 W é o valor mais usado nos exemplos de consumo. Use a potência da etiqueta do seu chuveiro.",
+      "fonte": "Faixa encontrada em guias públicos de consumo (docs/referencias.md, itens 4 e 5); o valor real está na etiqueta do Programa Brasileiro de Etiquetagem (Inmetro) do produto."
+    },
+    "minutos_por_banho": {
+      "valor": 8, "unidade": "min", "tipo": "estimado",
+      "justificativa": "Exemplos públicos de consumo usam cerca de 30 a 32 minutos de chuveiro por dia na casa; com 4 banhos, isso dá 8 minutos por banho. Meça o seu com um relógio.",
+      "fonte": "Exemplo de 5.500 W por 30 min/dia = 82,5 kWh/mês usado em guias públicos de consumo (docs/referencias.md, itens 4 e 5)."
+    },
+    "banhos_por_dia": {
+      "valor": 4, "unidade": "banhos/dia", "tipo": "hipótese",
+      "justificativa": "Família de 4 pessoas com um banho por dia cada. Troque pelo número da sua casa.",
+      "fonte": "Hipótese da equipe."
+    },
+    "tarifa_rs_kwh": {
+      "valor": 0.95, "unidade": "R$/kWh", "tipo": "hipótese",
+      "justificativa": "Valor ilustrativo com impostos, dentro da faixa usada em simulações públicas (R$ 0,85 a R$ 0,95). A tarifa muda por distribuidora e por mês: divida o total da sua conta pelos kWh consumidos.",
+      "fonte": "Fatura da distribuidora (valor real do usuário); Ranking de tarifas residenciais da ANEEL para comparação."
+    },
+    "outros_consumos_kwh_mes": {
+      "valor": 100, "unidade": "kWh/mês", "tipo": "hipótese",
+      "justificativa": "Consumo do resto da casa (geladeira, iluminação, TV). Só influencia o resultado em reais de quem tem Tarifa Social, por causa do limite de 80 kWh. Use os kWh da sua conta menos o banho.",
+      "fonte": "Hipótese da equipe; o valor real está na fatura."
+    },
+    "tarifa_social": {
+      "valor": false, "unidade": "sim/não", "tipo": "dado público",
+      "justificativa": "A Tarifa Social dá desconto de 100% na parcela do consumo até 80 kWh por mês e 0% acima disso.",
+      "fonte": "Lei nº 12.212/2010, art. 1º, com redação da Lei nº 15.235/2025."
+    },
+    "minutos_reduzidos": {
+      "valor": 5, "unidade": "min", "tipo": "hipótese",
+      "justificativa": "Meta de banho de 5 minutos, usada em campanhas de uso consciente. O usuário escolhe uma meta que consiga cumprir.",
+      "fonte": "Hipótese da equipe."
+    },
+    "fracao_solar": {
+      "valor": 0.6, "unidade": "fração (0 a 0,95)", "tipo": "hipótese",
+      "justificativa": "Parte da energia do banho que o aquecedor solar cobre ao longo do ano; o apoio elétrico cobre o resto em dias nublados e no inverno. Varia muito com a cidade, o tamanho do sistema e o horário do banho. 0,6 é uma suposição central; a análise de sensibilidade usa 0,4 e 0,8.",
+      "fonte": "Hipótese da equipe; confirmar com o dimensionamento do instalador (norma ABNT NBR 15569) e dados de irradiação da cidade."
+    },
+    "investimento_solar_rs": {
+      "valor": 3000, "unidade": "R$", "tipo": "hipótese",
+      "justificativa": "Valor ilustrativo para um sistema pequeno (cerca de 200 litros) instalado. Não foi encontrado preço médio público verificável; peça ao menos dois orçamentos.",
+      "fonte": "Hipótese da equipe; substituir por orçamento real."
+    },
+    "manutencao_solar_rs_ano": {
+      "valor": 100, "unidade": "R$/ano", "tipo": "hipótese",
+      "justificativa": "Limpeza dos coletores e revisão periódica.",
+      "fonte": "Hipótese da equipe; confirmar com o instalador."
+    },
+    "vida_util_solar_anos": {
+      "valor": 15, "unidade": "anos", "tipo": "hipótese",
+      "justificativa": "Prazo usado para julgar se o investimento se paga; confirmar a garantia e a vida útil informadas pelo fabricante.",
+      "fonte": "Hipótese da equipe."
+    },
+    "fator_emissao_kg_kwh": {
+      "valor": 0.0385, "unidade": "kg CO2/kWh", "tipo": "dado público",
+      "justificativa": "Fator médio de emissão do Sistema Interligado Nacional em 2023: 38,5 kg de CO2 por MWh. A média de 2015 a 2024 foi de cerca de 77 g/kWh; por isso a análise de sensibilidade também usa 0,077.",
+      "fonte": "MCTI, fatores médios de emissão de CO2 do SIN para inventários, conforme noticiado (docs/referencias.md, itens 6 a 8)."
+    },
+    "horizonte_anos": {
+      "valor": 10, "unidade": "anos", "tipo": "hipótese",
+      "justificativa": "Período para somar investimento, energia e manutenção. Tarifa mantida constante (sem reajuste nem juros), o que simplifica a conta.",
+      "fonte": "Hipótese da equipe."
+    }
+  },
+  "referencias_resumidas": [
+    "Fórmula: kWh = potência (kW) × horas de uso. Potência: etiqueta do chuveiro (Inmetro/PBE).",
+    "Tarifa Social: Lei nº 12.212/2010, art. 1º (redação da Lei nº 15.235/2025): 100% de desconto até 80 kWh/mês.",
+    "Emissões: fator médio do Sistema Interligado Nacional de 2023, 38,5 kg CO2/MWh (MCTI).",
+    "Preço, fração solar, manutenção e vida útil do aquecedor solar: hipóteses, a trocar por orçamento real."
+  ]
+}

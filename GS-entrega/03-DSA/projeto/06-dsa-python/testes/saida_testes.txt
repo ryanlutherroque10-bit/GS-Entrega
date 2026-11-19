@@ -1,0 +1,25 @@
+test_arquivo_inexistente_ou_so_cabecalho_resulta_em_lista_vazia (test_csv_menu.TestCargaCsvInvalido.test_arquivo_inexistente_ou_so_cabecalho_resulta_em_lista_vazia) ... ok
+test_arquivo_vazio_resulta_em_lista_vazia (test_csv_menu.TestCargaCsvInvalido.test_arquivo_vazio_resulta_em_lista_vazia) ... ok
+test_campo_vazio_e_id_invalido (test_csv_menu.TestCargaCsvInvalido.test_campo_vazio_e_id_invalido) ... ok
+test_coluna_excedente (test_csv_menu.TestCargaCsvInvalido.test_coluna_excedente) ... ok
+test_id_duplicado_e_cabecalho_errado (test_csv_menu.TestCargaCsvInvalido.test_id_duplicado_e_cabecalho_errado) ... ok
+test_linha_incompleta_gera_erro_com_numero_da_linha (test_csv_menu.TestCargaCsvInvalido.test_linha_incompleta_gera_erro_com_numero_da_linha) ... ok
+test_crud_completo_pelo_menu (test_csv_menu.TestMenu.test_crud_completo_pelo_menu) ... ok
+test_csv_danificado_nao_e_sobrescrito (test_csv_menu.TestMenu.test_csv_danificado_nao_e_sobrescrito) ... ok
+test_fim_da_entrada_ou_ctrl_c_salva_e_sai_sem_erro (test_csv_menu.TestMenu.test_fim_da_entrada_ou_ctrl_c_salva_e_sai_sem_erro) ... ok
+test_id_com_digitos_demais_e_recusado_com_mensagem_clara (test_csv_menu.TestMenu.test_id_com_digitos_demais_e_recusado_com_mensagem_clara) ... ok
+test_menu_com_lista_vazia (test_csv_menu.TestMenu.test_menu_com_lista_vazia) ... ok
+test_csv_persistencia (test_main.TestListaServicos.test_csv_persistencia) ... ok
+test_insercao_e_busca_por_id (test_main.TestListaServicos.test_insercao_e_busca_por_id) ... ok
+test_insertion_sort_ignora_acentos_e_maiusculas (test_main.TestListaServicos.test_insertion_sort_ignora_acentos_e_maiusculas) ... ok
+test_insertion_sort_por_titulo (test_main.TestListaServicos.test_insertion_sort_por_titulo) ... ok
+test_lista_vazia (test_main.TestListaServicos.test_lista_vazia) ... ok
+test_pesquisa_ignora_acentos (test_main.TestListaServicos.test_pesquisa_ignora_acentos) ... ok
+test_pesquisa_por_titulo_ou_categoria_sem_case (test_main.TestListaServicos.test_pesquisa_por_titulo_ou_categoria_sem_case) ... ok
+test_rejeita_id_duplicado_e_nao_positivo (test_main.TestListaServicos.test_rejeita_id_duplicado_e_nao_positivo) ... ok
+test_remocao_inicio_meio_fim_e_nao_encontrado (test_main.TestListaServicos.test_remocao_inicio_meio_fim_e_nao_encontrado) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.026s
+
+OK

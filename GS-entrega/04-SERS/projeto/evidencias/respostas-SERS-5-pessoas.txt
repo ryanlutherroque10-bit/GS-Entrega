@@ -1,0 +1,120 @@
+SERS 5 pessoas
+
+
+P1 — 4 moradores; casa própria
+B. COMPREENSÃO
+C1. Acertou — R$ 180 por mês.
+C2. Acertou — Reduzir o tempo de banho, porque não exige investimento.
+C3. Acertou — Não, é uma estimativa.
+C4. Acertou — Pedir orçamentos e verificar se a instalação é possível.
+C5. Acertou — O aquecedor solar usa energia renovável e pode ser adequado à casa própria.
+C6. Acertou — Tempo de banho, tarifa e clima.
+C. SITUAÇÃO 2
+S1. Não recomendaria instalar sem autorização do proprietário.
+S2. Reduziria o tempo dos banhos.
+D. CLAREZA
+U1. 5/5.
+U2. 5/5.
+U4. Nenhuma parte ficou confusa.
+E. UTILIDADE
+U6. 5/5.
+U3. Sim, reduziria o banho de 15 para 10 minutos.
+U5. Faltou uma comparação do gasto anual.
+U7. Sim, mas pesquisaria os preços antes da compra.
+F. FECHAMENTO
+Comentário: Gostei porque consegui entender quanto o banho pode pesar na conta de luz.
+
+P2 — 2 moradores; apartamento alugado
+B. COMPREENSÃO
+C1. Acertou — R$ 75 por mês.
+C2. Acertou — Tomar banhos mais curtos para economizar sem investimento.
+C3. Acertou — Não há garantia de economia.
+C4. Acertou com ajuda — Precisou lembrar da autorização do proprietário e dos orçamentos.
+C5. Acertou — O aquecedor solar usa energia renovável, mas não é uma opção viável de imediato no apartamento alugado.
+C6. Acertou — Tarifa e duração dos banhos.
+C. SITUAÇÃO 2
+S1. Não recomendaria investir imediatamente em aquecimento solar.
+S2. Usaria o chuveiro na menor potência confortável.
+D. CLAREZA
+U1. 4/5.
+U2. 4/5.
+U4. Custo de instalação.
+E. UTILIDADE
+U6. 4/5.
+U3. Sim, evitaria banhos demorados.
+U5. Faltou explicar a instalação em apartamentos.
+U7. Parcialmente, pois precisaria consultar o proprietário.
+F. FECHAMENTO
+Comentário: Achei fácil de usar, mas poderia explicar melhor as opções para quem mora de aluguel.
+
+P3 — 3 moradores; casa própria
+B. COMPREENSÃO
+C1. Acertou com ajuda — R$ 125 por mês.
+C2. Acertou — Reduzir o tempo de banho.
+C3. Acertou — Não, depende do consumo real.
+C4. Acertou — Verificar viabilidade de instalação e preços.
+C5. Acertou com ajuda — Identificou o aquecimento solar como renovável e considerou interessante para sua casa.
+C6. Acertou — Número de moradores, clima e tarifa.
+C. SITUAÇÃO 2
+S1. Só avaliaria o aquecedor solar com autorização e orçamento.
+S2. Compararia o consumo antes e depois de mudar os hábitos.
+D. CLAREZA
+U1. 3/5.
+U2. 4/5.
+U4. Retorno do investimento.
+E. UTILIDADE
+U6. 5/5.
+U3. Sim, pesquisaria aquecimento solar.
+U5. Faltou estimar o prazo para recuperar o investimento.
+U7. Sim, depois de confirmar as estimativas.
+F. FECHAMENTO
+Comentário: Seria interessante mostrar em quantos anos o aquecedor solar se paga.
+
+P4 — 4 moradores; casa alugada
+B. COMPREENSÃO
+C1. Acertou — R$ 145 por mês.
+C2. Acertou com ajuda — Reduzir o tempo de banho.
+C3. Acertou — Não, é uma previsão.
+C4. Acertou — Consultar o proprietário e solicitar orçamentos.
+C5. Acertou — O aquecedor solar usa energia renovável, mas não seria a primeira escolha para uma casa alugada.
+C6. Acertou com ajuda — Tempo de banho, tarifa, número de moradores e clima.
+C. SITUAÇÃO 2
+S1. Não considera prioritário instalar, devido ao custo e ao imóvel alugado.
+S2. Manteria banhos curtos.
+D. CLAREZA
+U1. 4/5.
+U2. 3/5.
+U4. Cálculo de economia mensal.
+E. UTILIDADE
+U6. 4/5.
+U3. Sim, orientaria os filhos a economizar.
+U5. Faltou explicar melhor os cálculos.
+U7. Não totalmente, gostaria de informações mais detalhadas.
+F. FECHAMENTO
+Comentário: Ajudou a entender a economia, mas alguns números poderiam ser mais simples.
+
+P5 — 1 morador; apartamento próprio
+B. COMPREENSÃO
+C1. Acertou — R$ 45 por mês.
+C2. Acertou — Diminuir a duração dos banhos.
+C3. Acertou — Não, a economia é estimada.
+C4. Acertou — Verificar a possibilidade de instalação e os custos.
+C5. Acertou — O aquecedor solar usa energia renovável, mas pode não compensar para seu baixo consumo individual.
+C6. Acertou — Tarifa, duração do banho e clima.
+C. SITUAÇÃO 2
+S1. Não considera o aquecedor solar prioritário nesse caso.
+S2. Evitaria desperdício e analisaria a conta de luz.
+D. CLAREZA
+U1. 5/5.
+U2. 5/5.
+U4. Nenhuma parte ficou confusa.
+E. UTILIDADE
+U6. 5/5.
+U3. Sim, usaria o chuveiro em potência menor quando possível.
+U5. Faltou comparar as potências do chuveiro.
+U7. Sim, como orientação inicial, mas não como única fonte para a compra.
+F. FECHAMENTO
+Comentário: É uma ferramenta útil, principalmente para quem nunca calculou o consumo do chuveiro.
+
+Clareza média (U1 e U2): 4,2/5.
+Utilidade média (U6): 4,6/5.

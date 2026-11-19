@@ -1,0 +1,28 @@
+test_ia_tem_erro_menor_que_media_historica_nos_dados_simulados (test_fila.ModelTest.test_ia_tem_erro_menor_que_media_historica_nos_dados_simulados) ... ok
+test_regressao_recupera_reta_conhecida (test_fila.ModelTest.test_regressao_recupera_reta_conhecida) ... ok
+test_validacao_otimizada_igual_a_reajuste_completo (test_fila.ModelTest.test_validacao_otimizada_igual_a_reajuste_completo) ... ok
+test_1_chegada_de_novos_cidadaos (test_fila.QueueApiTest.test_1_chegada_de_novos_cidadaos) ... ok
+test_2_conclusao_de_atendimentos (test_fila.QueueApiTest.test_2_conclusao_de_atendimentos) ... ok
+test_3_saida_com_fila_vazia_e_bloqueada (test_fila.QueueApiTest.test_3_saida_com_fila_vazia_e_bloqueada) ... ok
+test_4_atualizacao_da_estimativa_de_espera (test_fila.QueueApiTest.test_4_atualizacao_da_estimativa_de_espera) ... ok
+test_capacidade_maxima (test_fila.QueueApiTest.test_capacidade_maxima) ... ok
+test_duracao_invalida_e_rejeitada (test_fila.QueueApiTest.test_duracao_invalida_e_rejeitada) ... ok
+test_estado_sobrevive_reinicio_do_servidor (test_fila.QueueApiTest.test_estado_sobrevive_reinicio_do_servidor) ... ok
+test_json_invalido_e_rota_desconhecida (test_fila.QueueApiTest.test_json_invalido_e_rota_desconhecida) ... ok
+test_persistencia_e_exportacao_csv (test_fila.QueueApiTest.test_persistencia_e_exportacao_csv) ... ok
+test_acao_no_terminal_aparece_no_painel (test_integracao.IntegracaoTest.test_acao_no_terminal_aparece_no_painel) ... ok
+test_codigo_do_operador_com_acento_nao_derruba_a_requisicao (test_integracao.IntegracaoTest.test_codigo_do_operador_com_acento_nao_derruba_a_requisicao) ... ok
+test_codigo_do_operador_protege_alteracoes (test_integracao.IntegracaoTest.test_codigo_do_operador_protege_alteracoes) ... ok
+test_content_length_invalido_recebe_400 (test_integracao.IntegracaoTest.test_content_length_invalido_recebe_400) ... ok
+test_event_id_repetido_nao_conta_duas_vezes (test_integracao.IntegracaoTest.test_event_id_repetido_nao_conta_duas_vezes) ... ok
+test_reenvio_de_operacao_recusada_continua_recusado (test_integracao.IntegracaoTest.test_reenvio_de_operacao_recusada_continua_recusado) ... ok
+test_reinicio_mantem_protecao_contra_reenvio (test_integracao.IntegracaoTest.test_reinicio_mantem_protecao_contra_reenvio) ... ok
+test_resposta_perdida_e_reenvio_nao_duplicam (test_integracao.IntegracaoTest.test_resposta_perdida_e_reenvio_nao_duplicam)
+A requisição chega ao servidor, mas a resposta se perde; o terminal reenvia. ... ok
+test_servidor_inacessivel_nao_registra_evento (test_integracao.IntegracaoTest.test_servidor_inacessivel_nao_registra_evento) ... ok
+test_terminal_recebe_recusa_com_fila_vazia (test_integracao.IntegracaoTest.test_terminal_recebe_recusa_com_fila_vazia) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 16.508s
+
+OK

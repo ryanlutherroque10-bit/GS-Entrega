@@ -1,0 +1,46 @@
+# Demonstração terminal -> servidor -> painel (execução real em 16/11/2026, Windows 11, Python 3.14, servidor em 127.0.0.1:8137)
+# Entradas do terminal: s 5 (fila vazia) | c | c | c | s 7 | s 10 | e | q
+
+## Saída de tools/terminal_simulado.py
+Terminal ligado a http://127.0.0.1:8137
+Teclas: c = chegada | s <minutos> = concluir | e = estado | q = sair
+  Fila: 0 | Concluídos: 0 | Conv: 0.0 min | IA: 0.0 min
+>   ! Recusado pelo servidor (HTTP 409): A fila está vazia; não há atendimento para concluir.
+  Fila: 0 | Concluídos: 0 | Conv: 0.0 min | IA: 0.0 min
+>   OK (evento registrado no servidor)
+  Fila: 1 | Concluídos: 0 | Conv: 7.2 min | IA: 7.6 min
+>   OK (evento registrado no servidor)
+  Fila: 2 | Concluídos: 0 | Conv: 14.5 min | IA: 15.3 min
+>   OK (evento registrado no servidor)
+  Fila: 3 | Concluídos: 0 | Conv: 21.7 min | IA: 23.0 min
+>   OK (evento registrado no servidor)
+  Fila: 2 | Concluídos: 1 | Conv: 14.0 min | IA: 14.8 min
+>   OK (evento registrado no servidor)
+  Fila: 1 | Concluídos: 2 | Conv: 8.5 min | IA: 8.9 min
+>   Fila: 1 | Concluídos: 2 | Conv: 8.5 min | IA: 8.9 min
+> 
+## O que o painel recebe em seguida (GET /api/state, campos principais)
+queue_count: 1
+completed_count: 2
+rejected_count: 1
+average_service_minutes: 8.5
+conventional_wait_minutes: 8.5
+ai_wait_minutes: 8.9
+modelo: -0.12 1.066 60 simulados + 2 observados
+fila: [3]
+2026-11-16T12:33:48-03:00 rejeitado origem=terminal fila_apos=0 | Operação recusada: A fila está vazia; não há atendimento para concluir.
+2026-11-16T12:33:48-03:00 chegada origem=terminal fila_apos=1 | Pessoa 1 entrou na fila.
+2026-11-16T12:33:48-03:00 chegada origem=terminal fila_apos=2 | Pessoa 2 entrou na fila.
+2026-11-16T12:33:48-03:00 chegada origem=terminal fila_apos=3 | Pessoa 3 entrou na fila.
+2026-11-16T12:33:48-03:00 conclusao origem=terminal fila_apos=2 | Atendimento da pessoa 1 concluído; duração informada: 7.0 min; espera medida: 0.0 min.
+2026-11-16T12:33:48-03:00 conclusao origem=terminal fila_apos=1 | Atendimento da pessoa 2 concluído; duração informada: 10.0 min; espera medida: 7.0 min.
+
+## Ação pelo painel (mesma API que o navegador usa) e leitura pelo terminal
+POST /api/arrivals (painel) -> fila 2
+Terminal ligado a http://127.0.0.1:8137
+Teclas: c = chegada | s <minutos> = concluir | e = estado | q = sair
+  Fila: 2 | Concluídos: 2 | Conv: 17.0 min | IA: 18.0 min
+>   Fila: 2 | Concluídos: 2 | Conv: 17.0 min | IA: 18.0 min
+> 
+## Reenvio do mesmo evento (mesmo event_id): não conta duas vezes
+duplicate = True | fila 2

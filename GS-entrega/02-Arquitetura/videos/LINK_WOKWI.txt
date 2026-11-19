@@ -1,0 +1,7 @@
+Simulação do Raspberry Pi Pico W no Wokwi (Arquitetura)
+
+https://wokwi.com/projects/480879311582717953
+
+Nome do projeto: citizen-assist-fila-pico-w
+Salvo em 16/11/2026.
+Para usar: abrir o link e clicar no botão verde de play.

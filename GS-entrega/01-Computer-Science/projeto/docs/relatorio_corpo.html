@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Relatório — Módulo de decisão lógica da Tarifa Social (Citizen Assist AI)</title>
+<style>{{CSS}}</style>
+</head>
+<body>
+
+<section class="capa">
+  <div class="tag">GLOBAL SOLUTION 2026.2 · CITIZEN ASSIST AI</div>
+  <h1>Módulo de decisão lógica:<br>orientação sobre a Tarifa Social de Energia Elétrica</h1>
+  <div class="sub">Relatório técnico — Computer Science · Lógica booleana, De Morgan e mapas de Karnaugh</div>
+  <table>
+    <tr><td><b>Curso / turma</b></td><td>Ciência da Computação · 1º ano · 1CC-FEV</td></tr>
+    <tr><td><b>Integrantes</b></td><td>Ryan Luther Roque — RM 572993<br>João Guilherme Figueiredo — RM 572697</td></tr>
+    <tr><td><b>Simulador</b></td><td>Logic.ly (logic.ly/demo)</td></tr>
+    <tr><td><b>Data</b></td><td>12 de novembro de 2026</td></tr>
+  </table>
+  <div class="aviso" style="margin-top:28px">Protótipo educacional. Não é canal oficial, não coleta dados pessoais e não confirma a concessão de serviços ou direitos. A decisão sobre a Tarifa Social cabe à distribuidora de energia, com base no CadÚnico.</div>
+</section>
+
+<h2>1. Problema escolhido</h2>
+<p>Muitas famílias de baixa renda não sabem se podem receber a <b>Tarifa Social de Energia Elétrica</b> nem a quem recorrer. O módulo de decisão lógica do Citizen Assist AI faz quatro perguntas de sim/não e devolve <b>uma</b> orientação clara: há indício de direito naquela conta de luz; a família atende a uma condição, mas é preciso conferir com a distribuidora a situação da unidade (se é residencial e se é a única da família com o benefício); ou as condições modeladas não foram atendidas e a pessoa deve procurar o CRAS.</p>
+<p>A situação de atendimento é a <b>orientação sobre um benefício</b>: a resposta indica o próximo passo do cidadão, sem decidir por ele.</p>
+
+<h2>2. Regras e fontes</h2>
+<p>As regras foram retiradas do texto atualizado da Lei nº 12.212/2010, já com as mudanças da Lei nº 15.235/2025:</p>
+<table>
+  <tr><th class="txt">Dispositivo</th><th class="txt">O que diz (resumo)</th><th>Uso no modelo</th></tr>
+  <tr><td class="l">Art. 2º, caput</td><td class="l">A Tarifa Social vale para unidades da Subclasse Residencial Baixa Renda que atendam a <b>pelo menos uma</b> das condições dos incisos.</td><td>operador OU</td></tr>
+  <tr><td class="l">Art. 2º, I</td><td class="l">Família inscrita no CadÚnico com renda familiar mensal <i>per capita</i> menor ou igual a meio salário mínimo.</td><td>A · B</td></tr>
+  <tr><td class="l">Art. 2º, II</td><td class="l">Ter entre os moradores quem receba o Benefício de Prestação Continuada (BPC).</td><td>C</td></tr>
+  <tr><td class="l">Art. 2º, § 2º</td><td class="l">A tarifa é aplicada a uma única unidade consumidora por família de baixa renda.</td><td>D</td></tr>
+  <tr><td class="l">Art. 1º, I e II</td><td class="l">Desconto de 100% no consumo de até 80 kWh/mês; acima disso, sem desconto (redação da Lei nº 15.235/2025).</td><td>texto da saída T</td></tr>
+</table>
+<p>Fontes consultadas em <b>{{DATA_CONSULTA}}</b>; a lista completa com endereços está nas Referências.</p>
+<div class="aviso"><b>Fora do modelo:</b> o § 1º do art. 2º (famílias com renda até 3 salários mínimos e morador com doença que exige aparelho elétrico de uso contínuo), as regras específicas de famílias indígenas e quilombolas (§ 4º), a atualização do CadÚnico e a verificação de titularidade da conta. Por isso a saída K diz "procure o CRAS", e não "não tem direito".</div>
+
+<h2>3. Variáveis e saídas</h2>
+<table>
+  <tr><th>Variável</th><th class="txt">Pergunta ao cidadão</th><th>1 significa</th><th>0 significa</th></tr>
+  <tr><td><b>A</b></td><td class="l">A família está inscrita no CadÚnico?</td><td>inscrita</td><td>não inscrita</td></tr>
+  <tr><td><b>B</b></td><td class="l">A renda mensal por pessoa é de até meio salário mínimo?</td><td>até ½ salário mínimo</td><td>acima de ½ salário mínimo</td></tr>
+  <tr><td><b>C</b></td><td class="l">Alguém que mora na casa recebe o BPC?</td><td>recebe</td><td>ninguém recebe</td></tr>
+  <tr><td><b>D</b></td><td class="l">A conta é de uma casa (unidade residencial) <b>e</b> é a única da família com o benefício?</td><td>as duas coisas valem</td><td>pelo menos uma não vale: unidade não residencial, ou outra unidade da família já tem o benefício</td></tr>
+</table>
+<p><b>Sobre a variável D.</b> Ela combina duas condições (unidade residencial e unicidade do benefício na família) para manter o modelo em quatro variáveis. Por isso, quando D = 0, o circuito não sabe qual das duas falhou, e a saída U não pode afirmar que "o benefício deve ficar em outra unidade": ela apenas encaminha o cidadão à distribuidora. Os rótulos das lâmpadas nos prints são resumidos; vale o texto desta tabela.</p>
+<p>Para simplificar a escrita, usamos o sinal intermediário <b>R = A·B + C</b> ("atende ao art. 2º"). As saídas são exclusivas: em cada combinação, exatamente uma vale 1.</p>
+<table>
+  <tr><th>Saída</th><th class="txt">Quando vale 1</th><th class="txt">Orientação mostrada</th></tr>
+  <tr><td><b>T</b></td><td class="l" style="white-space:nowrap">R = 1 e D = 1</td><td class="l">Há indício de direito à Tarifa Social nesta unidade (100% de desconto até 80 kWh/mês). Confirmar com a distribuidora.</td></tr>
+  <tr><td><b>U</b></td><td class="l" style="white-space:nowrap">R = 1 e D = 0</td><td class="l">A família atende a uma condição, mas D = 0. Como D junta duas perguntas, o motivo pode ser unidade não residencial ou benefício já aplicado em outra unidade da família. Orientação: confirmar com a distribuidora a classificação da unidade e em qual conta o benefício pode ser aplicado. Não garante nem nega o benefício.</td></tr>
+  <tr><td><b>K</b></td><td class="l">R = 0</td><td class="l">Nenhuma das condições do art. 2º foi atendida: procurar o CRAS para inscrição/atualização no CadÚnico e verificar outras situações. Não é negativa oficial.</td></tr>
+</table>
+
+<h2>4. Tabela-verdade completa</h2>
+<p>Ordem das linhas: A é o bit mais significativo (índice do mintermo m = 8A + 4B + 2C + D).</p>
+<table>
+  <tr><th>m</th><th>A</th><th>B</th><th>C</th><th>D</th><th>R</th><th>T</th><th>U</th><th>K</th><th class="txt">Orientação</th></tr>
+  {{TABELA_VERDADE}}
+</table>
+<p>Conferência: T tem 5 linhas em 1, U tem 5 e K tem 6. São 16 no total, sem sobreposição.</p>
+
+<h2>5. Expressões canônicas</h2>
+<h3>Soma de mintermos</h3>
+<div class="expr">T = Σm(3, 7, 11, 13, 15) = A′B′CD + A′BCD + AB′CD + ABC′D + ABCD</div>
+<div class="expr">U = Σm(2, 6, 10, 12, 14) = A′B′CD′ + A′BCD′ + AB′CD′ + ABC′D′ + ABCD′</div>
+<div class="expr">K = Σm(0, 1, 4, 5, 8, 9) = A′B′C′D′ + A′B′C′D + A′BC′D′ + A′BC′D + AB′C′D′ + AB′C′D</div>
+<h3>Produto de maxtermos (forma equivalente)</h3>
+<div class="expr">T = ΠM(0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 14) &nbsp;·&nbsp; U = ΠM(0, 1, 3, 4, 5, 7, 8, 9, 11, 13, 15) &nbsp;·&nbsp; K = ΠM(2, 3, 6, 7, 10, 11, 12, 13, 14, 15)</div>
+<p>Notação: <code>+</code> é OU, justaposição ou <code>·</code> é E, e <code>′</code> é NÃO.</p>
+
+<h2>6. Simplificação por álgebra booleana</h2>
+<h3>Saída T</h3>
+<table>
+  <tr><th>#</th><th class="txt">Expressão</th><th class="txt">Propriedade usada</th></tr>
+  <tr><td>1</td><td class="l mono">A′B′CD + A′BCD + AB′CD + ABC′D + ABCD</td><td class="l">forma canônica</td></tr>
+  <tr><td>2</td><td class="l mono">(A′B′CD + A′BCD) + (AB′CD + ABCD) + (ABC′D + ABCD)</td><td class="l">idempotência (X = X + X: ABCD usado duas vezes), comutativa e associativa</td></tr>
+  <tr><td>3</td><td class="l mono">A′CD(B′ + B) + ACD(B′ + B) + ABD(C′ + C)</td><td class="l">distributiva (pôr em evidência)</td></tr>
+  <tr><td>4</td><td class="l mono">A′CD·1 + ACD·1 + ABD·1 = A′CD + ACD + ABD</td><td class="l">complemento (X + X′ = 1) e identidade (X·1 = X)</td></tr>
+  <tr><td>5</td><td class="l mono">CD(A′ + A) + ABD = <b>CD + ABD</b></td><td class="l">distributiva, complemento e identidade</td></tr>
+  <tr><td>6</td><td class="l mono">D(AB + C)</td><td class="l">distributiva (fatoração de D): <b>T = D·R</b></td></tr>
+</table>
+<h3>Saída U</h3>
+<p>Mesmos passos de T, trocando D por D′ (as cinco linhas de U são as de T com D = 0):</p>
+<div class="expr">U = A′B′CD′ + A′BCD′ + AB′CD′ + ABC′D′ + ABCD′ = CD′ + ABD′ = D′(AB + C) = D′·R</div>
+<h3>Saída K e teoremas de De Morgan</h3>
+<table>
+  <tr><th>#</th><th class="txt">Expressão</th><th class="txt">Propriedade usada</th></tr>
+  <tr><td>1</td><td class="l mono">A′B′C′D′ + A′B′C′D + A′BC′D′ + A′BC′D + AB′C′D′ + AB′C′D</td><td class="l">forma canônica</td></tr>
+  <tr><td>2</td><td class="l mono">A′B′C′(D′ + D) + A′BC′(D′ + D) + AB′C′(D′ + D)</td><td class="l">distributiva</td></tr>
+  <tr><td>3</td><td class="l mono">A′B′C′ + A′BC′ + AB′C′</td><td class="l">complemento e identidade</td></tr>
+  <tr><td>4</td><td class="l mono">(A′B′C′ + A′BC′) + (A′B′C′ + AB′C′)</td><td class="l">idempotência (A′B′C′ repetido)</td></tr>
+  <tr><td>5</td><td class="l mono">A′C′(B′ + B) + B′C′(A′ + A) = <b>A′C′ + B′C′</b></td><td class="l">distributiva, complemento e identidade</td></tr>
+  <tr><td>6</td><td class="l mono">C′(A′ + B′)</td><td class="l">distributiva</td></tr>
+  <tr><td>7</td><td class="l mono">C′·(AB)′</td><td class="l"><b>1º teorema de De Morgan:</b> A′ + B′ = (A·B)′</td></tr>
+  <tr><td>8</td><td class="l mono"><b>(AB + C)′ = R′</b></td><td class="l"><b>2º teorema de De Morgan:</b> X′·Y′ = (X + Y)′, com X = AB e Y = C</td></tr>
+</table>
+<p><b>Por que De Morgan foi necessário aqui:</b> a simplificação comum para em K = A′C′ + B′C′, que pede três portas NOT, duas AND e uma OR. Os dois teoremas de De Morgan mostram que K é exatamente a negação de R. Como R já é calculado para T e U, K passa a custar uma única porta NOT, e o circuito final cai de 15 para 6 portas (seção 8).</p>
+<p><b>Verificações:</b> T + U = R(D + D′) = R; e T + U + K = R + R′ = 1. Logo as três saídas cobrem todos os casos e nunca acendem juntas.</p>
+
+<h2 class="pb">7. Mapas de Karnaugh</h2>
+<p>Linhas: AB; colunas: CD, ambas na ordem de Gray (00, 01, 11, 10). As bordas opostas são vizinhas, por isso alguns grupos aparecem divididos em duas partes.</p>
+<div class="grid3">
+  <figure>{{KM_T}}<figcaption><b>T:</b> coluna CD = 11 inteira (quatro células) → <b>C·D</b>; par m13–m15 → <b>A·B·D</b>. Resultado: T = CD + ABD.</figcaption></figure>
+  <figure>{{KM_U}}<figcaption><b>U:</b> coluna CD = 10 inteira → <b>C·D′</b>; par m12–m14, que dá a volta entre as colunas 00 e 10 → <b>A·B·D′</b>. Resultado: U = CD′ + ABD′.</figcaption></figure>
+  <figure>{{KM_K}}<figcaption><b>K:</b> quadra m0, m1, m4, m5 → <b>A′·C′</b>; quadra m0, m1, m8, m9, que dá a volta entre as linhas 00 e 10 → <b>B′·C′</b>. Resultado: K = A′C′ + B′C′.</figcaption></figure>
+  <div>
+    <h3>Comparação com a álgebra</h3>
+    <table>
+      <tr><th>Saída</th><th>Álgebra</th><th>Karnaugh</th><th>Igual?</th></tr>
+      <tr><td>T</td><td class="mono">CD + ABD</td><td class="mono">CD + ABD</td><td class="ok">sim</td></tr>
+      <tr><td>U</td><td class="mono">CD′ + ABD′</td><td class="mono">CD′ + ABD′</td><td class="ok">sim</td></tr>
+      <tr><td>K</td><td class="mono">A′C′ + B′C′</td><td class="mono">A′C′ + B′C′</td><td class="ok">sim</td></tr>
+    </table>
+    <p>Os dois métodos chegam às mesmas somas de produtos mínimas. O mapa deixa os grupos visíveis; a álgebra mostra por que eles são válidos, inclusive o uso de m15 (em T) e m0/m1 (em K) em dois grupos, que é a idempotência.</p>
+  </div>
+</div>
+
+<h2 class="pb">8. Circuitos lógicos e comparação de portas</h2>
+<p><b>Critério de contagem (igual para todos):</b> cada porta AND/OR de <i>n</i> entradas conta como <i>n − 1</i> portas de 2 entradas; cada variável negada usa uma porta NOT, compartilhada pelas saídas.</p>
+{{CIRC_ORIGINAL}}
+{{CIRC_SIMPLIFICADO}}
+<figure>
+  <img src="../prints/m13_ABCD_1101.jpg" alt="Circuito fatorado montado no Logic.ly">
+  <figcaption><b>Circuito final (fatorado), montado no Logic.ly:</b> AND(A,B) → OR(·,C) = R; T = AND(R,D); U = AND(R,D′); K = NOT(R). Na imagem, A = 1, B = 1, C = 0, D = 1 (m13), e só a lâmpada T está acesa.</figcaption>
+</figure>
+<table>
+  <tr><th class="txt">Circuito</th><th>AND (2 ent.)</th><th>OR (2 ent.)</th><th>NOT</th><th>Total</th><th>Literais</th></tr>
+  <tr><td class="l">Original: forma canônica (16 mintermos)</td><td>48</td><td>13</td><td>4</td><td><b>65</b></td><td>64</td></tr>
+  <tr><td class="l">Simplificado: Karnaugh, sem compartilhar entre saídas</td><td>8</td><td>3</td><td>4</td><td><b>15</b></td><td>14</td></tr>
+  <tr><td class="l">Final: fatorado com R compartilhado (De Morgan), no Logic.ly</td><td>3</td><td>1</td><td>2</td><td><b>6</b></td><td>4 entradas</td></tr>
+</table>
+<p>Cálculo do original: T e U têm 5 mintermos cada (5 × 3 AND + 4 OR = 19 portas cada); K tem 6 (6 × 3 AND + 5 OR = 23); somando as 4 NOT, são 65 portas. O simplificado tem T = 4, U = 4 e K = 3, mais 4 NOT: 15 portas. A fatoração com R compartilhado reduz o circuito em <b>91%</b> em relação ao original, sem mudar nenhuma linha da tabela-verdade (seção 10).</p>
+
+<h2>9. Implementação</h2>
+<h3>Montagem no simulador Logic.ly</h3>
+<ol class="passos">
+  <li>Abrir <code>https://logic.ly/demo/</code> e fechar a janela de boas-vindas.</li>
+  <li>Arrastar 4 <i>Toggle Switch</i> (A, B, C, D), 3 <i>AND Gate</i>, 1 <i>OR Gate</i>, 2 <i>NOT Gate</i> e 3 <i>Light Bulb</i> (K, T, U).</li>
+  <li>Ligar A e B na 1ª AND; a saída dela e C na OR (sinal R).</li>
+  <li>Ligar R a: NOT (→ lâmpada K); 2ª AND junto com D (→ lâmpada T); 3ª AND junto com D′ (→ lâmpada U). D′ vem da 2ª NOT, ligada a D.</li>
+  <li>Clicar nas chaves para escolher as entradas (fio azul = 1) e observar qual lâmpada acende.</li>
+</ol>
+<p>Os rótulos (<i>Label</i>) no circuito explicam cada entrada e saída, para que quem testar entenda a orientação sem consultar a tabela.</p>
+<h3>Entradas inválidas e respostas compreensíveis</h3>
+<p>No Logic.ly cada entrada é uma <i>Toggle Switch</i>, que só assume 0 (desligada) ou 1 (ligada). Valores fora de {0, 1}, campos vazios ou textos não podem ser informados, ou seja, <b>a entrada inválida é impedida pela própria interface</b>. Ainda assim, o circuito trata o estado lógico:</p>
+<ul>
+  <li>as saídas são exclusivas (T + U + K = 1, seção 6): em qualquer combinação acende <b>exatamente uma</b> lâmpada, nunca nenhuma ou duas;</li>
+  <li>cada entrada e cada lâmpada tem um rótulo em linguagem simples, para que o cidadão entenda a pergunta e a orientação sem conhecer a tabela-verdade;</li>
+  <li>a saída K não diz "sem direito", e sim "procurar o CRAS", porque o modelo não cobre todas as hipóteses da lei.</li>
+</ul>
+<p>Os dados usados são apenas quatro respostas sim/não: nenhum nome, CPF, NIS ou endereço é informado ao circuito.</p>
+
+<h2 class="pb">10. Validação com as 16 combinações</h2>
+<p>Cada uma das 16 combinações foi aplicada às chaves do Logic.ly. A lâmpada acesa foi comparada com a <b>regra original</b> (tabela-verdade, seção 4) e com a <b>expressão simplificada</b> (T = CD + ABD, U = CD′ + ABD′, K = A′C′ + B′C′) calculada linha a linha.</p>
+<table>
+  <tr><th>m</th><th>ABCD</th><th>Regra original (tabela-verdade)</th><th>Expressão simplificada</th><th>Lâmpada acesa no Logic.ly</th><th>Equivalente</th></tr>
+  {{TABELA_VALIDACAO}}
+</table>
+<p><b>Resultado: 16 de 16 combinações equivalentes nas três representações</b>, com exatamente uma orientação por linha.</p>
+<h3>Prints da simulação no Logic.ly (todas as combinações)</h3>
+<div class="galeria">{{GALERIA}}</div>
+
+
+<h2>11. Limitações, privacidade e responsabilidade</h2>
+<ul>
+  <li><b>Não é canal oficial.</b> Quem decide é a distribuidora, com base no CadÚnico. O resultado T é um indício e não garante o desconto.</li>
+  <li><b>Equivalência lógica não é validade jurídica.</b> A seção 10 mostra que tabela-verdade, expressão simplificada e circuito dão o mesmo resultado. Isso não prova que as regras escolhidas estão completas ou atualizadas: essa parte depende das fontes da seção 2.</li>
+  <li><b>Saídas T e U cobrem só parte da lei.</b> T é indício, não concessão; U não identifica qual condição de D falhou; nenhuma saída exclui as hipóteses que ficaram fora do modelo.</li>
+  <li><b>Escopo parcial.</b> Não modela o § 1º (doença que exige aparelho elétrico), as regras de famílias indígenas e quilombolas, a atualização cadastral nem a titularidade da conta. A saída K não significa "sem direito".</li>
+  <li><b>As respostas dependem do cidadão.</b> O circuito não confere renda nem cadastro; uma resposta errada gera uma orientação errada.</li>
+  <li><b>Privacidade.</b> Só quatro respostas sim/não; nada de nome, CPF, NIS, endereço ou número da instalação. Nada é gravado.</li>
+  <li><b>Legislação muda.</b> As regras valem para a data de consulta ({{DATA_CONSULTA}}) e devem ser revisadas a cada alteração da lei.</li>
+</ul>
+
+<h2>12. Instruções de execução</h2>
+<ol class="passos">
+  <li>Acessar <code>https://logic.ly/demo/</code> em um navegador (não precisa instalar nada) e fechar a janela de boas-vindas.</li>
+  <li>Montar o circuito conforme a seção 9 e a figura da seção 8: 4 chaves, 3 AND, 1 OR, 2 NOT e 3 lâmpadas.</li>
+  <li>Clicar nas chaves A, B, C e D para definir as respostas (fio azul = 1 = sim).</li>
+  <li>Ler a orientação no rótulo da lâmpada acesa (T, U ou K).</li>
+  <li>Para conferir, repetir as 16 combinações da tabela-verdade (seção 4) e comparar com os prints da seção 10.</li>
+</ol>
+
+<h2>Referências</h2>
+<ol class="ref">
+  <li>BRASIL. <b>Lei nº 12.212, de 20 de janeiro de 2010.</b> Dispõe sobre a Tarifa Social de Energia Elétrica. Texto compilado. Presidência da República. Disponível em: https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12212.htm. Acesso em: {{DATA_CONSULTA}}.</li>
+  <li>BRASIL. <b>Lei nº 12.212, de 20 de janeiro de 2010</b> — norma atualizada. Câmara dos Deputados, Legislação Informatizada. Disponível em: https://www2.camara.leg.br/legin/fed/lei/2010/lei-12212-20-janeiro-2010-600945-normaatualizada-pl.html. Acesso em: {{DATA_CONSULTA}}.</li>
+  <li>BRASIL. <b>Lei nº 15.235, de 8 de outubro de 2025</b> (conversão da Medida Provisória nº 1.300/2025), que deu nova redação aos arts. 1º e 2º, § 4º, da Lei nº 12.212/2010, conforme indicado no texto compilado acima. Disponível em: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/l15235.htm. Acesso em: {{DATA_CONSULTA}}.</li>
+  <li>LOGIC.LY. <b>Logic.ly Online Demo</b> — simulador de circuitos digitais. Disponível em: https://logic.ly/demo/. Acesso em: {{DATA_CONSULTA}}.</li>
+</ol>
+
+</body>
+</html>

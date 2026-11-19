@@ -1,0 +1,152 @@
+### Demonstração 1 — fluxo completo pelo menu (cópia temporária dos dados; entradas enviadas pela entrada padrão)
+### Entradas, na ordem: 2,1 | 3,energia | 3,xyz | 1,6,Saúde,Cartão do SUS,Como solicitar o cartão,Documento com foto,UBS | 1,6,... (ID duplicado) | 4,6,... | 7 | 8 | 5,6 | 5,99 | 2,abc | 9 | 0
+5 serviço(s) carregado(s) de servicos.csv.
+
+=== CITIZEN ASSIST AI | CATÁLOGO DE SERVIÇOS ===
+1 Cadastrar | 2 Consultar por ID | 3 Pesquisar título/categoria
+4 Atualizar | 5 Excluir | 6 Listar | 7 Ordenar por título
+8 Análise | 0 Salvar e sair
+Opção: ID: 
+ID: 1
+Categoria: Direitos
+Título: Tarifa Social de Energia
+Descrição: Orientação geral para verificar critérios do benefício
+Requisitos: Consultar regras atuais e confirmar no canal oficial
+Local/canal: ANEEL ou distribuidora
+
+=== CITIZEN ASSIST AI | CATÁLOGO DE SERVIÇOS ===
+1 Cadastrar | 2 Consultar por ID | 3 Pesquisar título/categoria
+4 Atualizar | 5 Excluir | 6 Listar | 7 Ordenar por título
+8 Análise | 0 Salvar e sair
+Opção: Buscar por título ou categoria: 
+ID: 4
+Categoria: Energia
+Título: Consumo consciente
+Descrição: Dicas gerais para reduzir desperdício de energia
+Requisitos: Comparar consumo dos aparelhos e hábitos
+Local/canal: Orientação educativa
+
+ID: 1
+Categoria: Direitos
+Título: Tarifa Social de Energia
+Descrição: Orientação geral para verificar critérios do benefício
+Requisitos: Consultar regras atuais e confirmar no canal oficial
+Local/canal: ANEEL ou distribuidora
+
+=== CITIZEN ASSIST AI | CATÁLOGO DE SERVIÇOS ===
+1 Cadastrar | 2 Consultar por ID | 3 Pesquisar título/categoria
+4 Atualizar | 5 Excluir | 6 Listar | 7 Ordenar por título
+8 Análise | 0 Salvar e sair
+Opção: Buscar por título ou categoria: Nenhum resultado para essa busca.
+
+=== CITIZEN ASSIST AI | CATÁLOGO DE SERVIÇOS ===
+1 Cadastrar | 2 Consultar por ID | 3 Pesquisar título/categoria
+4 Atualizar | 5 Excluir | 6 Listar | 7 Ordenar por título
+8 Análise | 0 Salvar e sair
+Opção: ID único: Categoria: Título: Descrição: Requisitos: Local/canal: Serviço cadastrado.
+
+=== CITIZEN ASSIST AI | CATÁLOGO DE SERVIÇOS ===
+1 Cadastrar | 2 Consultar por ID | 3 Pesquisar título/categoria
+4 Atualizar | 5 Excluir | 6 Listar | 7 Ordenar por título
+8 Análise | 0 Salvar e sair
+Opção: ID único: Categoria: Título: Descrição: Requisitos: Local/canal: Não foi possível concluir: Esse ID já está cadastrado.
+
+=== CITIZEN ASSIST AI | CATÁLOGO DE SERVIÇOS ===
+1 Cadastrar | 2 Consultar por ID | 3 Pesquisar título/categoria
+4 Atualizar | 5 Excluir | 6 Listar | 7 Ordenar por título
+8 Análise | 0 Salvar e sair
+Opção: ID a atualizar: Categoria: Título: Descrição: Requisitos: Local/canal: Serviço atualizado.
+
+=== CITIZEN ASSIST AI | CATÁLOGO DE SERVIÇOS ===
+1 Cadastrar | 2 Consultar por ID | 3 Pesquisar título/categoria
+4 Atualizar | 5 Excluir | 6 Listar | 7 Ordenar por título
+8 Análise | 0 Salvar e sair
+Opção: 3 - Atualização do CadÚnico
+6 - Cartão Nacional de Saúde
+4 - Consumo consciente
+2 - Documentos para atendimento
+5 - Segunda via da conta
+1 - Tarifa Social de Energia
+
+=== CITIZEN ASSIST AI | CATÁLOGO DE SERVIÇOS ===
+1 Cadastrar | 2 Consultar por ID | 3 Pesquisar título/categoria
+4 Atualizar | 5 Excluir | 6 Listar | 7 Ordenar por título
+8 Análise | 0 Salvar e sair
+Opção: Total de serviços: 6
+- Atendimento: 2
+- Direitos: 1
+- Documentos: 1
+- Energia: 1
+- Saúde: 1
+
+=== CITIZEN ASSIST AI | CATÁLOGO DE SERVIÇOS ===
+1 Cadastrar | 2 Consultar por ID | 3 Pesquisar título/categoria
+4 Atualizar | 5 Excluir | 6 Listar | 7 Ordenar por título
+8 Análise | 0 Salvar e sair
+Opção: ID a excluir: Serviço excluído.
+
+=== CITIZEN ASSIST AI | CATÁLOGO DE SERVIÇOS ===
+1 Cadastrar | 2 Consultar por ID | 3 Pesquisar título/categoria
+4 Atualizar | 5 Excluir | 6 Listar | 7 Ordenar por título
+8 Análise | 0 Salvar e sair
+Opção: ID a excluir: ID inexistente; nada foi excluído.
+
+=== CITIZEN ASSIST AI | CATÁLOGO DE SERVIÇOS ===
+1 Cadastrar | 2 Consultar por ID | 3 Pesquisar título/categoria
+4 Atualizar | 5 Excluir | 6 Listar | 7 Ordenar por título
+8 Análise | 0 Salvar e sair
+Opção: ID: Não foi possível concluir: Digite um inteiro positivo válido.
+
+=== CITIZEN ASSIST AI | CATÁLOGO DE SERVIÇOS ===
+1 Cadastrar | 2 Consultar por ID | 3 Pesquisar título/categoria
+4 Atualizar | 5 Excluir | 6 Listar | 7 Ordenar por título
+8 Análise | 0 Salvar e sair
+Opção: Opção inválida.
+
+=== CITIZEN ASSIST AI | CATÁLOGO DE SERVIÇOS ===
+1 Cadastrar | 2 Consultar por ID | 3 Pesquisar título/categoria
+4 Atualizar | 5 Excluir | 6 Listar | 7 Ordenar por título
+8 Análise | 0 Salvar e sair
+Opção: Dados salvos. Até logo!
+
+### Demonstração 2 — reabertura: os dados persistiram (opções 6 e 0)
+5 serviço(s) carregado(s) de servicos.csv.
+
+=== CITIZEN ASSIST AI | CATÁLOGO DE SERVIÇOS ===
+1 Cadastrar | 2 Consultar por ID | 3 Pesquisar título/categoria
+4 Atualizar | 5 Excluir | 6 Listar | 7 Ordenar por título
+8 Análise | 0 Salvar e sair
+Opção: 
+ID: 3
+Categoria: Atendimento
+Título: Atualização do CadÚnico
+Descrição: Orientação para procurar atendimento do Cadastro Único
+Requisitos: Verificar endereço e horário antes de se deslocar
+(...)
+
+### Demonstração 3 — CSV com linha incompleta: o programa encerra sem alterar o arquivo
+63bf01d0f4d47a327e98539df0083a4f6726bd63 *dados/servicos.csv
+Não foi possível carregar dados/servicos.csv: Registro inválido na linha 7: faltam os campos: titulo, descricao, requisitos, local
+O arquivo não foi alterado. Corrija a linha indicada (ou restaure uma cópia
+íntegra do CSV) e execute o programa novamente.
+63bf01d0f4d47a327e98539df0083a4f6726bd63 *dados/servicos.csv
+
+### Demonstração 4 — lista vazia (arquivo de dados ausente): opções 2 a 8
+0 serviço(s) carregado(s) de servicos.csv.
+
+Opção: Lista vazia.
+
+Opção: Lista vazia.
+
+Opção: Lista vazia.
+
+Opção: Lista vazia.
+
+Opção: Lista vazia.
+
+Opção: Lista vazia.
+
+Opção: Total de serviços: 0
+Não há categorias para resumir.
+
+Opção: Dados salvos. Até logo!

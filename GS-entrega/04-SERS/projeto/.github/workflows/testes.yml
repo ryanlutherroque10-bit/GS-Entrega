@@ -1,0 +1,21 @@
+name: Testes SERS
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Mostrar versão do Python
+        run: python3 --version
+      - name: Executar testes
+        run: python3 -m unittest discover -s tests -v
+      - name: Exercitar saída de exemplo
+        run: python3 -m energia.assistente --exemplo
